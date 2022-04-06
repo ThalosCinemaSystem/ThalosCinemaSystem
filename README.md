@@ -19,7 +19,6 @@ pip install -r requirements_linux.txt
 ```
 ## Next steps
 ```bash
-cd TCS
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
