@@ -2,8 +2,10 @@
 {% load static %}
 
 
-
 {% block content %}
     {% include 'website/navbar.html' %}
-<h1>Thalos Cinema System</h1>
+    <div class="container">
+            <img src="{% static 'images/logo_sample.png' %}" alt="logo_sample" class="image">
+            <h1>Thalos Cinema System</h1>
+    </div>
 {% endblock %}
