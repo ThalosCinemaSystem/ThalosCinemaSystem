@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 
-def main_page(request):
+@login_required(login_url='login')
+def home(request):
     context = {}
 
     return render(request, 'website/main.html', context=context)
