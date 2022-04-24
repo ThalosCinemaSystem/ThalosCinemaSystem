@@ -15,12 +15,13 @@ h1
     margin-right: auto;
     padding-top: 20px;
     width: auto;
+
 }
 
 .navbar
 {
 min-width: 1720px;
-background-color: #303030;
+background-color: pink;
 display: flex;
 justify-content: space-between;
 }
@@ -66,4 +67,39 @@ align-items: center;
     display: flex;
     justify-content: space-between;
     margin: 10px;
+}
+.tile
+{
+    width: 10px;
+    background-color: #303030;
+    margin-left: 5%;
+}
+.mar_list
+{
+    margin-left: 5%;
+    margin-right: 15%;
+    text-align: justify;
+}
+.scrollspyHeading
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.prise
+{
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.footer
+{
+   display: flex;
+   justify-content: space-between;
+}
+.footertile1
+{
+    margin-top: 50px;
+    color: white;
+
 }
