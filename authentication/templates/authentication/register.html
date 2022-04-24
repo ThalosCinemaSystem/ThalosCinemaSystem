@@ -1,0 +1,38 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    {% include 'website/navbar.html' %}
+    <div class="container">
+        <h1 class="display-1">Register</h1>
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="username" class="form-label">Nazwa użytkownika</label>
+                <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <div class="mb-3">
+                <label for="first_name" class="form-label">Imię</label>
+                <input type="text" class="form-control" id="first_name" name="first_name">
+            </div>
+            <div class="mb-3">
+                <label for="last_name" class="form-label">Nazwisko</label>
+                <input type="text" class="form-control" id="last_name" name="last_name">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Hasło</label>
+                <input type="password" class="form-control" id="password" name="password1">
+            </div>
+            <div class="mb-3">
+                <label for="password2" class="form-label">Potwierdź hasło</label>
+                <input type="password" class="form-control" id="password2" name="password2">
+            </div>
+            <button type="submit" class="btn btn-primary">Zarejestruj</button>
+        </form>
+    </div>
+{% endblock %}

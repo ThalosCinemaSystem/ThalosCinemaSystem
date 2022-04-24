@@ -1,0 +1,22 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    {% include 'website/navbar.html' %}
+    <div class="container">
+        <h1 class="display-1">Login</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+          <div class="mb-3">
+            <label for="email" class="form-label">Adres email</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Hasło</label>
+            <input type="password" class="form-control" id="password" name="password">
+          </div>
+          <button type="submit" class="btn btn-primary">Zaloguj</button>
+        </form>
+    </div>
+{% endblock %}
