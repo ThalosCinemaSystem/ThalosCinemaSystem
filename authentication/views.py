@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from .forms import UserRegisterForm
 from .backends import UserLoginBackend
 from django.contrib.auth import login as auth_login
+from .decorators import unauthenticated
 
 
+@unauthenticated(url='home')
 def login(request):
     if request.method == "POST":
         email = request.POST.get('email')
@@ -16,6 +18,7 @@ def login(request):
     return render(request, 'authentication/login.html', {})
 
 
+@unauthenticated(url='home')
 def register(request):
     form = UserRegisterForm()
     if request.method == "POST":
