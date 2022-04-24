@@ -1,9 +1,13 @@
+body
+{
+    background: white;
+}
+
 h1
 {
     text-align: center;
     font-size: 50px;
 }
-
 .image
 {
     display: block;
@@ -11,4 +15,55 @@ h1
     margin-right: auto;
     padding-top: 20px;
     width: auto;
+}
+
+.navbar
+{
+min-width: 1720px;
+background-color: #303030;
+display: flex;
+justify-content: space-between;
+}
+
+.title
+{
+margin : 30px;
+color: white;
+font-family: 'Roboto Slab', serif;
+font-size: 200%;
+
+}
+a
+{
+	color: white;
+	letter-spacing: 4px;
+	text-decoration: none;
+}
+
+.buttons
+{
+display: flex;
+flex-direction: row;
+align-items: center;
+}
+.butt
+{
+	margin: 20px;
+}
+.btn
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    margin-right: 100px;
+	background: #FFE818;
+	min-width: 150px;
+}
+
+.cont
+{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
 }
