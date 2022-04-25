@@ -10,17 +10,17 @@ on:
       - main
   workflow_dispatch:
 
-env:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
       DEBUG: ${{ secrets.DEBUG_PROD }}
       DB_USERNAME: ${{ secrets.DB_USERNAME_PROD }}
       DB_NAME: ${{ secrets.DB_NAME }}
       DB_HOST: ${{ secrets.DB_HOST_PROD }}
       DB_PASSWORD: ${{ secrets.DB_PASSWORD_PROD }}
       DB_PORT: ${{ secrets.DB_PORT }}
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
@@ -56,24 +56,8 @@ jobs:
             . 
             !venv/
 
-          DEBUG: ${{ env.DEBUG }}
-          DB_USERNAME: ${{ env.DB_USERNAME }}
-          DB_NAME: ${{ env.DB_NAME }}
-          DB_HOST: ${{ env.DB_HOST }}
-          DB_PASSWORD: ${{ env.DB_PASSWORD }}
-          DB_PORT: ${{ env.DB_PORT }}
-
   deploy:
     runs-on: ubuntu-latest
-
-    env:
-      DEBUG: ${{ secrets.DEBUG_PROD }}
-      DB_USERNAME: ${{ secrets.DB_USERNAME_PROD }}
-      DB_NAME: ${{ secrets.DB_NAME }}
-      DB_HOST: ${{ secrets.DB_HOST_PROD }}
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD_PROD }}
-      DB_PORT: ${{ secrets.DB_PORT }}
-
     needs: build
     environment:
       name: 'Production'
@@ -93,9 +77,3 @@ jobs:
           app-name: 'thalos'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E1BEDD0657A44F079431F408A04307D5 }}
-          DEBUG: ${{ env.DEBUG }}
-          DB_USERNAME: ${{ env.DB_USERNAME }}
-          DB_NAME: ${{ env.DB_NAME }}
-          DB_HOST: ${{ env.DB_HOST }}
-          DB_PASSWORD: ${{ env.DB_PASSWORD }}
-          DB_PORT: ${{ env.DB_PORT }}
