@@ -2,11 +2,26 @@ body
 {
     background: white;
 }
-
-h1
+h1{
+        font-family: 'Roboto Slab', serif;
+}
+.bg-gray
 {
-    text-align: center;
-    font-size: 50px;
+    background-color: #303030;
+}
+.nav_active
+{
+    position: relative;
+}
+.nav_active::before
+{
+    content: "";
+    position: absolute;
+    left: 5%;
+    bottom: -5px;
+    height: 1px;
+    width: 85%;
+    border-bottom: 1px solid yellow;
 }
 .image
 {
@@ -16,14 +31,6 @@ h1
     padding-top: 20px;
     width: auto;
 
-}
-
-.navbar
-{
-min-width: 1720px;
-background-color: gray;
-display: flex;
-justify-content: space-between;
 }
 
 .title

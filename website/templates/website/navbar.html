@@ -1,28 +1,32 @@
-<nav class="navbar">
-
-	<div class="title">
-	THALOS CINEMA
-	</div>
-
-	<div class = "buttons">
-		<a href="{% url 'main_page' %}" class ="butt" type="button">
-		REPERTUAR
-		<hr style="border: 0.1px; background: yellow; height: 2px;">
-		</a>
-		<a class ="butt" type="button">
-		WYDARZENIA
-		</a>
-		<a class ="butt" type="button">
-		PROMOCJA
-		</a>
-		<a href="{% url 'schools' %}" class ="butt" type="button">
-		SZKOŁY
-		</a>
-		<a href="{% url 'marathons' %}" class ="butt" type="button">
-		MARATONY
-		</a>
-	</div>
-
-    <button type="button" class="btn btn-warning">Konto</button>
-
-	</nav>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark mx-auto bg-gray">
+        <h1 class="navbar-brand m-4 fs-2">THALOS CINEMA</h1>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbars">
+        {% with url_name=request.resolver_match.url_name %}
+            <ul class="navbar-nav text-center justify-content mx-5">
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{% url 'main_page' %}"><span class="{% if url_name == 'main_page' %}nav_active{% endif %}">REPERTUAR</span></a>
+                </li>
+                <li class="nav-item ">
+                     <a class="nav-link text-light" href="#">WYDARZENIA</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">PROMOCJA</a>
+                </li>
+                <li class="nav-item">
+                     <a class="nav-link text-light" href="{% url 'schools' %}"><span class="{% if url_name == 'schools' %}nav_active{% endif %}">SZKOŁY</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{% url 'marathons' %}"><span class="{% if url_name == 'marathons' %}nav_active{% endif %}">MARATONY</span></a>
+                </li>
+                <li class="nav-item mx-5">
+                    <button type="button" class="mx-auto btn btn-warning">Konto</button>
+                </li>
+            </ul>
+        {% endwith %}
+        </div>
+    </nav>
+</header>
