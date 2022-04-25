@@ -5,7 +5,7 @@ from django.contrib.auth import login as auth_login
 from .decorators import unauthenticated
 
 
-@unauthenticated(url='home')
+@unauthenticated(url='main_page')
 def login(request):
     if request.method == "POST":
         email = request.POST.get('email')
@@ -13,7 +13,7 @@ def login(request):
         user = UserLoginBackend().authenticate(request, email=email, password=password)
         if user:
             auth_login(request, user)
-            return redirect('home')
+            return redirect('main_page')
 
     return render(request, 'authentication/login.html', {})
 
@@ -26,7 +26,7 @@ def register(request):
         if form.is_valid():
             form.save()
 
-            return redirect('home')
+            return redirect('main_page')
 
     context = {'form': form}
 
