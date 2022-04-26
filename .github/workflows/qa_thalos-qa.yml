@@ -33,9 +33,6 @@ jobs:
       - name: Makemigrations
         run: python manage.py makemigrations
 
-      - name: Migrate
-        run: python manage.py migrate
-
       - name: Clear staticfiles
         run: python manage.py collectstatic --clear
 
@@ -59,7 +56,7 @@ jobs:
       name: 'QA'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
-    steps:
+    steps: 
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
