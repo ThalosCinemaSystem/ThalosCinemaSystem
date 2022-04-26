@@ -1,52 +1,50 @@
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark mx-auto bg-gray">
-        <h1 class="navbar-brand m-4 fs-2">THALOS CINEMA</h1>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbars">
+<nav class="navbar-main navbar navbar-expand-lg navbar-dark py-3 px-2 px-md-4 px-lg-5">
+    <h1 class="logo-navbar px-lg-4">THALOS CINEMA</h1>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbars">
         {% with url_name=request.resolver_match.url_name %}
-            <ul class="navbar-nav text-center justify-content mx-5">
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="{% url 'main_page' %}"><span class="{% if url_name == 'main_page' %}nav_active{% endif %}">REPERTUAR</span></a>
+            <ul class="navbar-nav text-center justify-content px-lg-4">
+                <li class="nav-item mx-1">
+                    <a class="nav-link text-light" href="{% url 'main_page' %}"><span class="nav-link-text {% if url_name == 'main_page' %}nav_active{% endif %}">REPERTUAR</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="{% url 'events_and_promotions' %}"><span class="{% if url_name == 'events_and_promotions' %}nav_active{% endif %}">PROMOCJA</a>
+                <li class="nav-item mx-1">
+                    <a class="nav-link text-light" href="{% url 'events_and_promotions' %}"><span class="nav-link-text {% if url_name == 'events_and_promotions' %}nav_active{% endif %}">PROMOCJA</a>
                 </li>
-                <li class="nav-item">
-                     <a class="nav-link text-light" href="{% url 'schools' %}"><span class="{% if url_name == 'schools' %}nav_active{% endif %}">SZKOŁY</span></a>
+                <li class="nav-item mx-1">
+                    <a class="nav-link text-light" href="{% url 'schools' %}"><span class="nav-link-text {% if url_name == 'schools' %}nav_active{% endif %}">SZKOŁY</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="{% url 'marathons' %}"><span class="{% if url_name == 'marathons' %}nav_active{% endif %}">MARATONY</span></a>
+                <li class="nav-item mx-1">
+                    <a class="nav-link text-light" href="{% url 'marathons' %}"><span class="nav-link-text {% if url_name == 'marathons' %}nav_active{% endif %}">MARATONY</span></a>
                 </li>
-                <li class="nav-item mx-5">
+                <li class="nav-item mx-1 pt-2 pt-lg-0" style="max-width: 120px;">
                     <div class="dropdown">
-                      <button class="mx-auto btn btn-warning dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                        KONTO
-                      </button>
-                      <ul class="dropdown-menu px-3" aria-labelledby="dropdownMenu2" style="position:absolute;left: -50px">
-                        <li >
-                                 <form action="" method="post">
+                        <button class="navbar-button mx-auto btn btn-warning dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                            KONTO
+                        </button>
+                        <ul class="dropdown-menu px-5 login-form" aria-labelledby="dropdownMenu2">
+                            <li >
+                                <form action="" method="post">
                                     {% csrf_token %}
-                                  <div class="mb-3">
-                                    <label for="email" class="form-label">Adres email</label>
-                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
-                                  </div>
-                                  <div class="mb-3">
-                                    <label for="password" class="form-label">Hasło</label>
-                                    <input type="password" class="form-control" id="password" name="password">
-                                  </div>
-                                  <button type="submit" class="btn btn-primary">Zaloguj</button>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Adres email</label>
+                                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Hasło</label>
+                                        <input type="password" class="form-control" id="password" name="password">
+                                    </div>
+                                    <button type="submit" class="navbar-button-account-form navbar-button btn">Zaloguj</button>
                                 </form>
-                        </li>
-                        <li>Nie masz konta?  <a href="{% url 'register' %}" style=" letter-spacing: 0;color: black">Zarejestruj się!</a></li>
+                            </li>
+                            <li>Nie masz konta?  <a href="{% url 'register' %}" style=" letter-spacing: 0;color: black">Zarejestruj się!</a></li>
 
 
-                      </ul>
+                        </ul>
                     </div>
                 </li>
             </ul>
         {% endwith %}
-        </div>
-    </nav>
-</header>
+    </div>
+</nav>
