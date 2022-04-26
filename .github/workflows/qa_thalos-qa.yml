@@ -29,12 +29,18 @@ jobs:
       
       - name: Install dependencies
         run: pip install -r requirements.txt
-        
-      - name: Makemigrations QA
+
+      - name: Makemigrations
         run: python manage.py makemigrations
-        
-      - name: Migrate database QA
+
+      - name: Migrate
         run: python manage.py migrate
+
+      - name: Clear staticfiles
+        run: python manage.py collectstatic --clear
+
+      - name: Collect staticfiles
+        run: python manage.py collectstatic --noinput
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
@@ -53,7 +59,7 @@ jobs:
       name: 'QA'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
-    steps:
+    steps: 
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
