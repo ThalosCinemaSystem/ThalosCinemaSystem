@@ -33,7 +33,6 @@ except KeyError:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-
 else:
     DEBUG = os.environ['DEBUG']
     DATABASES = {
@@ -134,6 +133,9 @@ STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+MEDIA_ROOT = BASE_DIR / 'static/images/upload'
+
+MEDIA_URL = '/images/upload/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
