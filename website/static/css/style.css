@@ -58,14 +58,14 @@ align-items: center;
 {
 	margin: 20px;
 }
-.btn
-{
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-right: 100px;
-	background: #FFE818;
-	min-width: 150px;
+    background: #FFE818;
+    min-width: 150px;
+    color: black;
 }
 
 .cont
@@ -97,16 +97,4 @@ align-items: center;
     display: flex;
     justify-content: flex-start;
     margin-bottom: 20px;
-}
-
-.footer
-{
-   display: flex;
-   justify-content: space-between;
-}
-.footertile1
-{
-    margin-top: 50px;
-    color: white;
-
 }
