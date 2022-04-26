@@ -33,9 +33,6 @@ jobs:
       - name: Makemigrations
         run: python manage.py makemigrations
 
-      - name: Migrate
-        run: python manage.py migrate
-
       - name: Clear staticfiles
         run: python manage.py collectstatic --clear
 
@@ -73,3 +70,6 @@ jobs:
           app-name: 'thalos-qa'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_33497065E2B1474194108F5E44519DEB }}
+      
+      - name: Migrate
+        run: python manage.py migrate
