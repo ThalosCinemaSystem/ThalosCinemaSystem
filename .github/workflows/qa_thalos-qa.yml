@@ -57,6 +57,9 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
+      - name: Migrate
+        run: python manage.py migrate
+      
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
@@ -70,6 +73,3 @@ jobs:
           app-name: 'thalos-qa'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_33497065E2B1474194108F5E44519DEB }}
-      
-      - name: Migrate
-        run: python manage.py migrate
