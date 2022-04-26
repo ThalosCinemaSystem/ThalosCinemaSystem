@@ -33,6 +33,9 @@ jobs:
       - name: Makemigrations
         run: python manage.py makemigrations
 
+      - name: Migrate
+        run: python manage.py migrate
+
       - name: Clear staticfiles
         run: python manage.py collectstatic --clear
 
