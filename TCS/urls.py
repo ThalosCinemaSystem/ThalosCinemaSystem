@@ -25,3 +25,7 @@ urlpatterns = [
     path('auth/', include('authentication.urls'))
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'website.views.error_404'
+handler500 = 'website.views.error_500'
+
