@@ -130,13 +130,11 @@ USE_TZ = True
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+MEDIA_ROOT = BASE_DIR / 'media/images/upload'
+# MEDIA_URL = '/images/upload/'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-MEDIA_ROOT = BASE_DIR / 'static/images/upload'
-
-MEDIA_URL = '/images/upload/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -144,6 +142,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
+
 CORS_ALLOW_METHODS = [
     "DELETE",
     "GET",
@@ -152,5 +151,23 @@ CORS_ALLOW_METHODS = [
     "POST",
     "PUT",
 ]
+
 CORS_ALLOWED_ORIGINS = ['https://thalos.software', 'https://thalos-qa.azurewebsites.net']
 CSRF_TRUSTED_ORIGINS = ['https://thalos.software', 'https://thalos-qa.azurewebsites.net']
+
+DEFAULT_FILE_STORAGE = 'TCS.custom_azure.AzureMediaStorage'
+STATICFILES_STORAGE = 'TCS.custom_azure.AzureStaticStorage'
+
+STATIC_LOCATION = "static"
+MEDIA_LOCATION = "media"
+
+AZURE_ACCOUNT_NAME = "thalosqa"
+AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
+
+
+
+STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
+
+CORS_ALLOWED_ORIGINS.append(f'https://{AZURE_CUSTOM_DOMAIN}')
+CSRF_TRUSTED_ORIGINS.append(f'https://{AZURE_CUSTOM_DOMAIN}')

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from azure.storage.blob import BlobClient
 
 
 # Create your models here.
@@ -18,12 +19,25 @@ class Movie(models.Model):
     title = models.CharField(max_length=30, null=True)
     description = models.CharField(max_length=1024, null=True)
     during = models.IntegerField(null=True)
-    thumbnail = models.ImageField(null = True, blank = True)
+    thumbnail = models.ImageField(upload_to='movies_images')
     genre = models.CharField(max_length=30, null=True)
     url_trailer = models.CharField(max_length=30, null=True)
 
     def __str__(self):
         return self.title
+
+    def delete(self, *args, **kwargs):
+        blob_service = BlobClient(account_url='https://thalosqa.blob.core.windows.net/',
+                                  credential={"account_name": "thalosqa",
+                                              "account_key":"LtydyCKpgsEsbKTWjPuHr6/eQI6lHP7WZcpsJRW74Mrg7V2nPdFfFhkwz6nznXnM4jFaUSbH8V1/qByXEDm3XQ=="},
+                                  container_name='media',
+                                  blob_name=self.thumbnail.name)
+
+        print(self.thumbnail.url)
+
+        blob_service.delete_blob()
+
+        super(Movie, self).delete(*args, **kwargs)
 
 
 class Room(models.Model):
