@@ -97,7 +97,7 @@ table {
 {
 	width: 350px;
 	position:absolute!important;
-	top: 54px!important;
+	top: 66px!important;
 	left: -230px!important;
 	font-family: 'Roboto';
 }
@@ -111,13 +111,10 @@ page-slider {
 @media screen and (max-width: 991px) {
 .login-form{
 	position: absolute!important;
-	width: 50vw;
+	width: 100vw;
+	top: 52px!important;
 	left: 50%!important;
 	transform: translateX(-50%);
-}
-}
-@media screen and (max-width: 662px) {
-.login-form{
-	width: 60vw;
+	border-radius: 0;
 }
 }
