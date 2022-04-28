@@ -47,6 +47,7 @@ table {
 /*navbar*/
 .navbar-main
 {
+	width: 100vw;
     background: #373737;
 	hz-index: 2;
 
