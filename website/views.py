@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.template import RequestContext
 
 
 def main_page(request):
@@ -30,3 +31,11 @@ def repertoire(request):
     context = {}
 
     return render(request, 'website/repertoire.html', context=context)
+
+def error_404(request, exception):
+    data = {"error_http": "Błąd 404"}
+    return render(request, 'website/error_http.html', context=data)
+
+def error_500(request):
+    data = {"error_http": "Błąd 500"}
+    return render(request, 'website/error_http.html', context=data)
