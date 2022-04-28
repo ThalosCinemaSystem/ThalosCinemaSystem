@@ -2,6 +2,57 @@
 {% load static %}
 
 {% block content %}
-
-
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="slide" style="background: url('https://www.firefly.rs/wp-content/uploads/2021/03/01_ff-webhero_v05.jpg')"></div>
+      <div class="carousel-caption">
+        <h5>Lorem Ipsum</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu nisl ut neque volutpat malesuada. Donec porttitor aliquet tortor, eget convallis lectus ornare in. Phasellus at quam ut nunc vulputate efficitur et quis tortor. Nunc sit amet leo sed risus faucibus commodo. Phasellus tincidunt neque</p>
+        <span class="d-none d-md-block">
+          <button class="navbar-button btn movie-desc-icon" type="button">Dramat</button>
+          <button class="navbar-button btn movie-desc-icon" type="button">Horror</button>
+          <button class="navbar-button btn movie-desc-icon" type="button">160min</button>
+        </span>
+      </div>
+    </div>
+    <div class="carousel-item">
+        <div class="slide" style="background: url('https://www.firefly.rs/wp-content/uploads/2020/11/01_ff-webhero_v01-1.jpg')"></div>
+      <div class="carousel-caption">
+        <h5>Donec efficitur</h5>
+        <p>Donec efficitur purus eu felis finibus facilisis. Nullam nec tellus turpis. Cras congue convallis egestas. Vivamus ac dui eu justo auctor malesuada. Aliquam in purus mollis, semper erat vel, condimentum massa. Aliquam erat volutpat. Donec efficitur est in enim hendrerit, quis tincidunt arcu venenatis.</p>
+        <span class="d-none d-md-block">
+          <button class="navbar-button btn movie-desc-icon" type="button">Dramat</button>
+          <button class="navbar-button btn movie-desc-icon" type="button">Horror</button>
+          <button class="navbar-button btn movie-desc-icon" type="button">160min</button>
+        </span>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="slide" style="background: url('https://www.firefly.rs/wp-content/uploads/2020/11/01_Block-27-webhero.jpg')"></div>
+      <div class="carousel-caption">
+        <h5>Vivamus semper</h5>
+        <p>Vivamus semper ut urna at hendrerit. Nunc pellentesque ultrices blandit. Mauris ullamcorper viverra libero sit amet tincidunt. Fusce non malesuada orci. Curabitur id justo at erat laoreet vulputate. Ut tristique tortor nibh, sit amet commodo nunc commodo quis. Sed sagittis convallis scelerisque.</p>
+        <span class="d-none d-md-block">
+          <button class="navbar-button btn movie-desc-icon" type="button">Dramat</button>
+          <button class="navbar-button btn movie-desc-icon" type="button">Horror</button>
+          <button class="navbar-button btn movie-desc-icon" type="button">160min</button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 {% endblock %}
