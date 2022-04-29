@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+    <!--slider-->
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -55,4 +56,75 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+     <!--repertoire-->
+    <div class="repertoire">
+    <div>
+    <h5 class="h-main">Repertuar</h5>
+    <button type="button" class="wybierz-kino-button btn navbar-button dropdown-toggle" data-bs-toggle="dropdown">Wybierz kino</button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Link 1</a></li>
+      <li><a class="dropdown-item" href="#">Link 2</a></li>
+      <li><a class="dropdown-item" href="#">Link 3</a></li>
+    </ul>
+    <div class="repertoire-days">
+        <p>dziś</p>
+        <p>CZW</p>
+        <p>SB</p>
+        <p>ND</p>
+        <p><span class="material-symbols-outlined">calendar_month</span></p>
+    </div>
+    </div>
+        <div class="buttons">
+            <button type="button" class="btn1 btn navbar-button dropdown-toggle" data-bs-toggle="dropdown">Gatunek</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Link 1</a></li>
+              <li><a class="dropdown-item" href="#">Link 2</a></li>
+              <li><a class="dropdown-item" href="#">Link 3</a></li>
+            </ul>
+            <button type="button" class="btn navbar-button dropdown-toggle" data-bs-toggle="dropdown">Najwyższa ocena</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Link 1</a></li>
+              <li><a class="dropdown-item" href="#">Link 2</a></li>
+              <li><a class="dropdown-item" href="#">Link 3</a></li>
+            </ul>
+            </div>
+    </div>
+        <div class="repertoire-movie">
+
+            <img src="{% static 'images/Jumanji.jpg' %}" alt="">
+            <div>
+            <h5 class="h-main">Szybci i Wściekli</h5>
+            <div class="repertoire-movie-type-icon">
+                <button type="submit" class="navbar-button btn">Akcji</button>
+                <button type="submit" class="navbar-button btn">Dramat</button>
+                <button type="submit" class="navbar-button btn hour-info">140 min</button>
+            </div>
+             <div class="repertoire-movie-type-icon hour-icon">
+                <button type="submit" class="navbar-button btn">13:00</button>
+                <button type="submit" class="navbar-button btn">14:00</button>
+                <button type="submit" class="navbar-button btn">15:00</button>
+                 <button type="submit" class="navbar-button btn">16:00</button>
+                <button type="submit" class="navbar-button btn">20:00</button>
+            </div>
+            </div>
+        </div>
+        <div class="repertoire-movie">
+
+            <img src="{% static 'images/Jumanji.jpg' %}" alt="">
+            <div>
+            <h5 class="h-main">Szybci i Wściekli</h5>
+            <div class="repertoire-movie-type-icon">
+                <button type="submit" class="navbar-button btn">Akcji</button>
+                <button type="submit" class="navbar-button btn">Dramat</button>
+                <button type="submit" class="navbar-button btn hour-info">140 min</button>
+            </div>
+             <div class="repertoire-movie-type-icon hour-icon">
+                <button type="submit" class="navbar-button btn">13:00</button>
+                <button type="submit" class="navbar-button btn">14:00</button>
+                <button type="submit" class="navbar-button btn">15:00</button>
+                 <button type="submit" class="navbar-button btn">16:00</button>
+                <button type="submit" class="navbar-button btn">20:00</button>
+            </div>
+            </div>
+        </div>
 {% endblock %}
