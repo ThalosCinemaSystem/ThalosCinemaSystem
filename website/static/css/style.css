@@ -132,20 +132,20 @@ table {
 {
 	text-align: left;
 	max-width: 600px;
-	top: 180px;
+	top: 120px;
 	display: block;
 }
 .slider .carousel-caption h5
 {
 	text-transform: uppercase;
-	font-size: 70px;
+	font-size: 35px;
 	font-weight: 600;
     margin-bottom: 15px;
 	font-family: Roboto, sans-serif;
 }
 .slider .carousel-caption p
 {
-	font-size: 17px;
+	font-size: 14px;
 	line-height: 1.5;
 	font-family: Roboto, sans-serif;
 }
@@ -179,10 +179,10 @@ table {
 }
 .h-main
 {
-	font-size: 32px;
+	font-size: 20px;
 	text-transform: uppercase;
-	letter-spacing: 0.5px;
-	margin: 30px 0;
+	letter-spacing: 1px;
+	margin: 20px 0;
 	font-weight: 600;
 }
 .repertoire .buttons
@@ -208,13 +208,13 @@ table {
 .repertoire-days p
 {
 	text-transform: uppercase;
-	font-size: 30px;
+	font-size: 20px;
 	margin-right: 15px;
 	cursor: pointer;
 }
 .repertoire-days p span
 {
-	font-size: 35px
+	font-size: 26px
 }
 .repertoire-days p:hover
 {
@@ -223,8 +223,8 @@ table {
 .repertoire-movie img
 {
 
-	width: 150px;
-	height: 240px;
+	width: 120px;
+	height: 140px;
 	margin-right: 15px;
 }
 .repertoire-movie button
@@ -232,6 +232,7 @@ table {
 	width: auto;
 	margin-bottom: 10px;
 	margin-right: 5px;
+	font-size: 12px;
 }
 .hour-info
 {
@@ -255,12 +256,12 @@ div.number-box
 	display: flex;;
 	justify-content: center;
 	align-items: center;
-	font-size: 30px;
-	width: 45px;
-	height: 45px;
+	font-size: 20px;
+	width: 30px;
+	height: 30px;
 	border: solid 1px #727272;
 	color: #727272;
-	margin: 0 5px;
+	margin: 0 2px;
 	cursor: pointer;
 	transition: 0.5s;
 	text-align: center;
@@ -274,7 +275,7 @@ div.number-box:hover
 	padding: 0 30px;
 }
 .event-section .carousel {
-	width: 70vw;
+	width: 100%;
 	height: auto;
 	margin: auto;
 }
@@ -323,13 +324,13 @@ footer
 	background: #242424;
 	color: white;
 	padding: 40px 40px;
-	margin-top: 125px;
+	margin-top: 65px;
 }
 footer h5
 {
 	text-transform: uppercase;
 	font-weight: 600;
-	font-size: 20px;
+	font-size: 16px;
 	margin-bottom: 7px;
 }
 .footer-h1-col
@@ -338,7 +339,7 @@ footer h5
 	align-items: center;
 	justify-content: center;
 	font-family: 'Times New Roman', sans-serif;
-	font-size: 40px;
+	font-size: 30px;
 	text-transform: uppercase;
 	margin-bottom: 10px;
 }
@@ -374,6 +375,9 @@ footer p
 }
 /*brakepoint*/
 @media screen and (max-width: 576px) {
+
+}
+@media screen and (max-width: 576px) {
 	.slide
 	{
 	height: calc(100vh - 100px);
@@ -386,7 +390,37 @@ footer p
 	}
 }
 @media screen and (min-width: 576px) {
-
+.slider .carousel-caption h5{
+	font-size: 55px;
+}
+	.slider .carousel-caption p
+	{
+		font-size: 18px;
+	}
+	.h-main{
+		font-size: 25px;
+	}
+	.repertoire-days p
+	{
+		font-size: 25px;
+	}
+	.repertoire-days p span
+	{
+		font-size: 30px;
+	}
+	.repertoire-movie button
+	{
+		font-size: 16px;
+	}
+	div.number-box
+	{
+		width: 35px;
+		height: 35px;
+	}
+	footer
+	{
+		margin-top: 120px;
+	}
 }
 @media screen and (min-width: 768px) {
 	.repertoire .buttons
