@@ -272,7 +272,7 @@ div.number-box:hover
 }
 .event-section
 {
-	padding: 0 30px;
+	padding: 30px;
 }
 .event-section .carousel {
 	width: 100%;
@@ -371,9 +371,57 @@ footer p
 	justify-content: center;
 	align-items: center;
 }
-.register-section .form-label
+/*Maratons Section*/
+.marathons-section
+{
+	padding-top:89px;
+	margin-bottom: 40px;
+}
+.marathons-section-h
+{
+	text-align:center;
+}
+.marathons-section .h-main
 {
 
+}
+.h-main-title-marathon
+{
+	margin-right: 10px;
+}
+.marathons-row
+{
+}
+.marathon-price
+{
+	display: block;
+	background: #FFE818;
+	padding: 6px 7px;
+	text-transform: uppercase;
+	border-radius: 5px;
+}
+.marathon-img-mobile
+{
+	width: 120px;
+	height: 200px;
+	margin: 0 10px 0 0;
+	float: left;
+}
+.maraton-desc
+{
+	margin: 0 10px 0px;
+	border-bottom: solid 1px black;
+}
+.maraton-desc p
+{
+	min-height: 200px;
+}
+.marathon-cont
+{
+	display: flex;
+	align-items: center;
+	width: 100vw;
+	padding: 0 10px;
 }
 @media screen and (max-width: 991px) {
 .login-form{
@@ -436,6 +484,13 @@ footer p
 	}
 }
 @media screen and (min-width: 768px) {
+	.maraton-desc{
+		margin: 0 50px
+	}
+	.marathon-cont
+	{
+		padding-left: 50px;
+	}
 	.repertoire .buttons
 	{
 		margin-top: 98px;
@@ -472,6 +527,13 @@ footer p
 	}
 }
 @media screen and (min-width: 992px) {
+	.maraton-desc{
+		margin: 0 190px
+	}
+	.marathon-cont
+	{
+		padding-left: 190px;
+	}
 	.main-page-margin
 	{
 		padding: 30px 100px;
@@ -486,6 +548,17 @@ footer p
 	 }
 }
 @media screen and (min-width: 1200px) {
+	.maraton-desc{
+		margin: 0 290px
+	}
+	.marathon-cont
+	{
+		padding-left: 290px;
+	}
+	.main-page-margin
+	{
+		padding: 30px 100px;
+	}
 	.event-section .carousel
 	{
 		width: 50vw;
@@ -508,7 +581,7 @@ footer p
 	}
 	.event-section
 	{
-		padding: 0 170px;
+		padding: 0px 170px 70px;
 	}
 	div.page-number-navigation
 	{
@@ -520,6 +593,13 @@ footer p
 	}
 }
 @media screen and (min-width: 1400px) {
+	.maraton-desc{
+		margin: 0 530px
+	}
+	.marathon-cont
+	{
+		padding-left: 530px;
+	}
 	.repertoire
 	{
 		margin: 0 220px 20px;
@@ -534,7 +614,7 @@ footer p
 	}
 	.event-section
 	{
-		padding: 0 220px;
+		padding: 0 220px 70px;
 	}
 	div.page-number-navigation
 	{
@@ -559,7 +639,7 @@ footer p
 	}
 	.event-section
 	{
-		padding: 0 400px;
+		padding: 0 400px 70px;
 	}
 	.premieres-section .h-main
 	{
