@@ -285,7 +285,6 @@ div.number-box:hover
 }
 div.premieres-images-container
 {
-	padding: 0 80px;
 	font-size: 14px;
 	display: flex;
 	flex-wrap: wrap;
@@ -510,5 +509,12 @@ footer p
 	footer
 	{
 		padding: 40px 200px;
+	}
+	div.page-number-navigation {
+		padding-right: 395px;
+	}
+	.number-navigation-2
+	{
+		padding-right: 175px!important;
 	}
 }
