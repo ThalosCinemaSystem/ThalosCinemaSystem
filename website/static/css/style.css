@@ -483,7 +483,7 @@ footer p
 		padding: 40px 200px;
 	}
 }
-@media screen and (min-width: 2000px) {
+@media screen and (min-width: 1800px) {
 	footer
 	{
 		padding: 40px 400px;
