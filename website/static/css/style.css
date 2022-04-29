@@ -274,7 +274,8 @@ div.number-box:hover
 	padding: 0 30px;
 }
 .event-section .carousel {
-	width: 50vw;
+	width: 70vw;
+	height: auto;
 	margin: auto;
 }
 .premieres-section
@@ -423,6 +424,10 @@ footer p
 	 }
 }
 @media screen and (min-width: 1200px) {
+	.event-section .carousel
+	{
+		width: 50vw;
+	}
 	.navbar-main{
 		padding-right: 140px !important;
 		padding-left: 140px !important;
