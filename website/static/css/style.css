@@ -263,6 +263,7 @@ div.number-box
 	margin: 0 5px;
 	cursor: pointer;
 	transition: 0.5s;
+	text-align: center;
 }
 div.number-box:hover
 {
@@ -275,7 +276,6 @@ div.number-box:hover
 .event-section .carousel {
 	width: 50vw;
 	margin: auto;
-	padding-top: 20px;
 }
 .premieres-section
 {
@@ -311,6 +311,48 @@ div.premieres-image-div
 .premieres-image-div img
 {
 	width: 270px;
+}
+.premieres-image-label h5
+{
+	text-transform: uppercase;
+	font-weight: 600;
+	font-size: 15px;
+}
+footer
+{
+	background: #242424;
+	color: white;
+	padding: 40px 40px;
+	margin-top: 125px;
+}
+footer h5
+{
+	text-transform: uppercase;
+	font-weight: 600;
+	font-size: 20px;
+	margin-bottom: 7px;
+}
+.footer-h1-col
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Times New Roman', sans-serif;
+	font-size: 40px;
+	text-transform: uppercase;
+	margin-bottom: 10px;
+}
+.footer-col
+{
+	margin-bottom: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+footer p
+{
+	max-width: 200px;
 }
 @media screen and (max-width: 991px) {
 .login-form{
@@ -365,6 +407,10 @@ div.premieres-image-div
 	{
 		padding-right: 50px;
 	}
+	.footer-col
+	{
+		text-align: left;
+	}
 }
 @media screen and (min-width: 992px) {
 	.main-page-margin
@@ -401,6 +447,10 @@ div.premieres-image-div
 	{
 		padding-right: 165px;
 	}
+	footer
+	{
+		padding: 40px 60px;
+	}
 }
 @media screen and (min-width: 1400px) {
 	.repertoire
@@ -422,5 +472,15 @@ div.premieres-image-div
 	div.page-number-navigation
 	{
 		padding-right: 215px;
+	}
+	footer
+	{
+		padding: 40px 200px;
+	}
+}
+@media screen and (min-width: 2000px) {
+	footer
+	{
+		padding: 40px 400px;
 	}
 }
