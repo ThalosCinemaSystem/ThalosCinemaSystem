@@ -324,7 +324,7 @@ footer
 	background: #242424;
 	color: white;
 	padding: 40px 40px;
-	margin-top: 65px;
+	margin-top: 0px!important;
 }
 footer h5
 {
@@ -363,6 +363,18 @@ footer p
 {
 	margin: 0 0 15px 0 ;
 }
+.register-section
+{
+	padding: 100px 15px 0;
+	min-height: calc(100vh - 394px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.register-section .form-label
+{
+
+}
 @media screen and (max-width: 991px) {
 .login-form{
 	position: absolute!important;
@@ -374,9 +386,6 @@ footer p
 }
 }
 /*brakepoint*/
-@media screen and (max-width: 576px) {
-
-}
 @media screen and (max-width: 576px) {
 	.slide
 	{
@@ -421,6 +430,10 @@ footer p
 	{
 		margin-top: 120px;
 	}
+	.register-section
+	{
+		padding: 100px 50px 70px;
+	}
 }
 @media screen and (min-width: 768px) {
 	.repertoire .buttons
@@ -443,7 +456,7 @@ footer p
 	}
 	.event-section
 	{
-		padding: 0 50px;
+		padding: 0 50px 70px;
 	}
 	div.page-number-navigation
 	{
@@ -453,15 +466,23 @@ footer p
 	{
 		text-align: left;
 	}
+	.register-section form div
+	{
+		width: 300px;
+	}
 }
 @media screen and (min-width: 992px) {
 	.main-page-margin
 	{
 		padding: 30px 100px;
 	}
-	 .navbar-main
+	 .navbar-main-opacity
 	 {
-		 background: #2424248f;
+		 background: #2424248f!important;
+	 }
+	 .slider .carousel-caption h5
+	 {
+		 margin-top: 100px;
 	 }
 }
 @media screen and (min-width: 1200px) {
