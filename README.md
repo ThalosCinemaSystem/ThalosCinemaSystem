@@ -1,4 +1,4 @@
-# ThalosCinemaSystem ([thalos.software](https://thalos.software/))
+# ThalosCinemaSystem ([thalos.software](https://thalospublic.azurewebsites.net/)
 
 # Start working on this project 
 ```bash
