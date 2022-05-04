@@ -18,7 +18,7 @@ class Movie(models.Model):
     title = models.CharField(max_length=30, null=True)
     description = models.CharField(max_length=1024, null=True)
     during = models.IntegerField(null=True)
-    thumbnail = models.CharField(max_length=30, null=True)
+    thumbnail = models.ImageField(null = True, blank = True)
     genre = models.CharField(max_length=30, null=True)
     url_trailer = models.CharField(max_length=30, null=True)
 
@@ -68,3 +68,10 @@ class Reservation(models.Model):
 
     def __str__(self):
         return self.user.get_username()
+
+
+class Marathon(models.Model):
+    name = models.CharField(max_length=30, null=True)
+    description = models.CharField(max_length=1024, null=True)
+    price = models.FloatField(null=True)
+    thumbnail = models.ImageField(null=True, blank=True)

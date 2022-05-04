@@ -1,13 +1,64 @@
-body
-{
-    background: white;
+/*Resetowanie ustwaień domyślnych*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 16px;
+	font: inherit;
+	vertical-align: baseline;
 }
-h1{
-        font-family: 'Roboto Slab', serif;
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
 }
-.bg-gray
+body {
+    font-size: 16px;
+	position: relative;
+	font-family: Roboto, sans-serif;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*navbar*/
+.navbar-main
 {
-    background-color: #303030;
+	width: 100vw;
+    background: #242424;
+	z-index: 2;
+	position: absolute;
+
+}
+.logo-navbar
+{
+    color:#ffffff;
+    font-size: 25px;
+	font-family: "Times New Roman";
 }
 .nav_active
 {
@@ -23,90 +74,586 @@ h1{
     width: 85%;
     border-bottom: 1px solid yellow;
 }
-.image
+.nav-link-text
 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 20px;
-    width: auto;
+    font-family: 'Roboto';
+	font-size: 18px;
+	letter-spacing: 1px;
+}
+.nav-link-text:hover
+{
+	font-weight: bold;
+}
+.navbar-button
+{
+	background: #FFE818;
+	width: 120px;
+	font-family: 'Roboto';
+	font-size: 16px;
+	font-weight: bold;
+}
+.navbar-nav
+{
+	justify-content: center;
+	align-items: center;
+}
+.login-form
+{
+	width: 350px;
+	position:absolute!important;
+	top: 66px!important;
+	left: -230px!important;
+	font-family: 'Roboto';
+}
+.navbar-button-account-form
+{
+	margin-bottom: 10px;
+}
+.page-slider {
+	z-index: 1;
+}
+/*slider*/
+.slider .slide
+{
+	height: calc(100vh - 200px);
+}
+.slider .slide:after
+{
+	content: "";
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    top: 0px;
+    background-image: linear-gradient(to right,rgb(0 0 0 / 30%), rgb(0 0 0 / 0%));
+    z-index: 0;
+}
+.slider .carousel-caption
+{
+	text-align: left;
+	max-width: 600px;
+	top: 120px;
+	display: block;
+}
+.slider .carousel-caption h5
+{
+	text-transform: uppercase;
+	font-size: 35px;
+	font-weight: 600;
+    margin-bottom: 15px;
+	font-family: Roboto, sans-serif;
+}
+.slider .carousel-caption p
+{
+	font-size: 14px;
+	line-height: 1.5;
+	font-family: Roboto, sans-serif;
+}
+.movie-desc-icon
+{
+	margin-right: 10px;
+	margin-top: 15px;
+}
+/*repertoire*/
+.repertoire
+{
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	margin: 0px 30px 20px 30px;
+}
+.repertoire-movie{
+	margin: 0 30px;
+	display: flex;
+	flex-direction: column-reverse;
+	border-top: solid 1px #000000;
+	padding: 20px 0;
+}
+.repertoire-days
+{
+	display: flex;
+}
+.repertoire-movie-type-icon
+{
 
 }
-
-.title
+.h-main
 {
-margin : 30px;
-color: white;
-font-family: 'Roboto Slab', serif;
-font-size: 200%;
-
+	font-size: 20px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	margin: 20px 0;
+	font-weight: 600;
 }
-a
+.repertoire .buttons
 {
-	color: white;
-	letter-spacing: 4px;
-	text-decoration: none;
+	margin-top: 30px;
+	align-items: flex-end;
 }
+.repertoire .btn1
+{
+	margin-right: 10px;
+}
+.repertoire .h-main{
+}
+.repertoire .navbar-button{
+	width: auto;
+	background: #fff;
+	border:solid 1px #333333;
+}
+.wybierz-kino-button
+{
+	margin-bottom: 15px;
+}
+.repertoire-days p
+{
+	text-transform: uppercase;
+	font-size: 20px;
+	margin-right: 15px;
+	cursor: pointer;
+}
+.repertoire-days p span
+{
+	font-size: 26px
+}
+.repertoire-days p:hover
+{
+	color: #F4BCBC;
+}
+.repertoire-movie img
+{
 
-.buttons
-{
-display: flex;
-flex-direction: row;
-align-items: center;
+	width: 120px;
+	height: 140px;
+	margin-right: 15px;
 }
-.butt
+.repertoire-movie button
 {
+	width: auto;
+	margin-bottom: 10px;
+	margin-right: 5px;
+	font-size: 12px;
+}
+.hour-info
+{
+	background: #B6B6B6;
+}
+.hour-icon button{
+	background: #F4BCBC;
+}
+/*number-navigation*/
+div.page-number-navigation
+{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: flex-end;
+	padding-right: 25px;
+	padding-bottom: 15px;
+}
+div.number-box
+{
+	display: flex;;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+	width: 30px;
+	height: 30px;
+	border: solid 1px #727272;
+	color: #727272;
+	margin: 0 2px;
+	cursor: pointer;
+	transition: 0.5s;
+	text-align: center;
+}
+div.number-box:hover
+{
+	background: #B6B6B6;
+}
+.event-section
+{
+	padding: 30px;
+}
+.event-section .carousel {
+	width: 100%;
+	height: auto;
+	margin: auto;
+}
+.premieres-section
+{
+	padding: 1px 30px 0 30px;
+	background: #f8f8f8;
+}
+div.premieres-images-container
+{
+	font-size: 14px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-end
+}
+div.premieres-image
+{
+	height: 150px;
+	overflow: hidden;
+}
+div.premieres-image-label
+{
+	padding: 10px;
+}
+div.premieres-image-div
+{
+	width: 270px;
+	text-align: center;
+	box-shadow: 0px 0px 24px -2px rgba(66, 68, 90, 1);
+	cursor: pointer;
 	margin: 20px;
 }
-.btn
+.premieres-image-div img
 {
+	width: 270px;
+}
+.premieres-image-label h5
+{
+	text-transform: uppercase;
+	font-weight: 600;
+	font-size: 15px;
+}
+footer
+{
+	background: #242424;
+	color: white;
+	padding: 40px 40px;
+	margin-top: 0px!important;
+}
+footer h5
+{
+	text-transform: uppercase;
+	font-weight: 600;
+	font-size: 16px;
+	margin-bottom: 7px;
+}
+.footer-h1-col
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Times New Roman', sans-serif;
+	font-size: 30px;
+	text-transform: uppercase;
+	margin-bottom: 10px;
+}
+.footer-col
+{
+	margin-bottom: 15px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-    margin-right: 100px;
+	text-align: center;
+}
+footer p
+{
+	max-width: 200px;
+}
+.number-navigation-2
+{
+	padding: 0 0 15px 0!important;
+}
+.repertoire-h
+{
+	margin: 0 0 15px 0 ;
+}
+.register-section
+{
+	padding: 100px 15px 0;
+	min-height: calc(100vh - 394px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+/*Maratons Section*/
+.marathons-section
+{
+	padding-top:89px;
+	margin-bottom: 40px;
+}
+.marathons-section-h
+{
+	text-align:center;
+}
+.marathons-section .h-main
+{
+
+}
+.h-main-title-marathon
+{
+	margin-right: 10px;
+}
+.marathons-row
+{
+}
+.marathon-price
+{
+	display: block;
 	background: #FFE818;
-	min-width: 150px;
+	padding: 6px 7px;
+	text-transform: uppercase;
+	border-radius: 5px;
 }
-
-.cont
+.marathon-img-mobile
 {
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    margin: 10px;
+	width: 120px;
+	height: 200px;
+	margin: 0 10px 0 0;
+	float: left;
 }
-.tile
+.maraton-desc
 {
-    width: 10px;
-    background-color: #303030;
-    margin-left: 5%;
+	margin: 0 10px 0px;
+	border-bottom: solid 1px black;
 }
-.mar_list
+.maraton-desc p
 {
-    margin-left: 5%;
-    margin-right: 15%;
-    text-align: justify;
+	min-height: 200px;
 }
-.scrollspyHeading
+.marathon-cont
 {
-    margin-top: 20px;
-    margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+	width: 100vw;
+	padding: 0 10px;
 }
-.prise
-{
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 20px;
+@media screen and (max-width: 991px) {
+.login-form{
+	position: absolute!important;
+	width: 100vw;
+	top: 52px!important;
+	left: 50%!important;
+	transform: translateX(-50%);
+	border-radius: 0;
 }
-
-.footer
-{
-   display: flex;
-   justify-content: space-between;
 }
-.footertile1
-{
-    margin-top: 50px;
-    color: white;
-
+/*brakepoint*/
+@media screen and (max-width: 576px) {
+	.slide
+	{
+	height: calc(100vh - 100px);
+	}
+	.slider .carousel-caption h5{
+		font-size: 40px;
+	}
+	.slider .carousel-caption p{
+		font-size: 16px;
+	}
+}
+@media screen and (min-width: 576px) {
+.slider .carousel-caption h5{
+	font-size: 55px;
+}
+	.slider .carousel-caption p
+	{
+		font-size: 18px;
+	}
+	.h-main{
+		font-size: 25px;
+	}
+	.repertoire-days p
+	{
+		font-size: 25px;
+	}
+	.repertoire-days p span
+	{
+		font-size: 30px;
+	}
+	.repertoire-movie button
+	{
+		font-size: 16px;
+	}
+	div.number-box
+	{
+		width: 35px;
+		height: 35px;
+	}
+	footer
+	{
+		margin-top: 120px;
+	}
+	.register-section
+	{
+		padding: 100px 50px 70px;
+	}
+}
+@media screen and (min-width: 768px) {
+	.maraton-desc{
+		margin: 0 50px
+	}
+	.marathon-cont
+	{
+		padding-left: 50px;
+	}
+	.repertoire .buttons
+	{
+		margin-top: 98px;
+	}
+	.repertoire
+	{
+		flex-direction: row;
+		margin: 0 50px 20px;
+	}
+	.repertoire-movie
+	{
+		flex-direction: row;
+		margin: 0 50px;
+	}
+	.premieres-section
+	{
+		padding: 1px 50px 0 50px;
+	}
+	.event-section
+	{
+		padding: 0 50px 70px;
+	}
+	div.page-number-navigation
+	{
+		padding-right: 50px;
+	}
+	.footer-col
+	{
+		text-align: left;
+	}
+	.register-section form div
+	{
+		width: 300px;
+	}
+}
+@media screen and (min-width: 992px) {
+	.maraton-desc{
+		margin: 0 190px
+	}
+	.marathon-cont
+	{
+		padding-left: 190px;
+	}
+	.main-page-margin
+	{
+		padding: 30px 100px;
+	}
+	 .navbar-main-opacity
+	 {
+		 background: #2424248f!important;
+	 }
+	 .slider .carousel-caption h5
+	 {
+		 margin-top: 100px;
+	 }
+}
+@media screen and (min-width: 1200px) {
+	.maraton-desc{
+		margin: 0 290px
+	}
+	.marathon-cont
+	{
+		padding-left: 290px;
+	}
+	.main-page-margin
+	{
+		padding: 30px 100px;
+	}
+	.event-section .carousel
+	{
+		width: 50vw;
+	}
+	.navbar-main{
+		padding-right: 140px !important;
+		padding-left: 140px !important;
+	}
+	.repertoire
+	{
+		margin: 0 170px 20px;
+	}
+	.repertoire-movie
+	{
+		margin: 0 170px;
+	}
+	.premieres-section
+	{
+		padding: 1px 170px 0 170px;
+	}
+	.event-section
+	{
+		padding: 0px 170px 70px;
+	}
+	div.page-number-navigation
+	{
+		padding-right: 165px;
+	}
+	footer
+	{
+		padding: 40px 60px;
+	}
+}
+@media screen and (min-width: 1400px) {
+	.maraton-desc{
+		margin: 0 530px
+	}
+	.marathon-cont
+	{
+		padding-left: 530px;
+	}
+	.repertoire
+	{
+		margin: 0 220px 20px;
+	}
+	.repertoire-movie
+	{
+		margin: 0 220px;
+	}
+	.premieres-section
+	{
+		padding: 1px 220px 0 220px;
+	}
+	.event-section
+	{
+		padding: 0 220px 70px;
+	}
+	div.page-number-navigation
+	{
+		padding-right: 215px;
+	}
+	footer
+	{
+		padding: 40px 200px;
+	}
+}
+@media screen and (min-width: 1800px) {
+.repertoire
+	{
+		margin: 0 400px 20px;
+	}
+	.repertoire-movie
+	{
+		margin: 0 400px;
+	}
+	.premieres-section
+	{
+	}
+	.event-section
+	{
+		padding: 0 400px 70px;
+	}
+	.premieres-section .h-main
+	{
+		padding-left: 180px!important;
+	}
+	footer
+	{
+		padding: 40px 200px;
+	}
+	div.page-number-navigation {
+		padding-right: 395px;
+	}
+	.number-navigation-2
+	{
+		padding-right: 175px!important;
+	}
 }
