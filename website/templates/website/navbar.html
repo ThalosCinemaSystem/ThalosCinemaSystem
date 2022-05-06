@@ -26,7 +26,7 @@
                         </button>
                         <ul class="dropdown-menu px-5 login-form" aria-labelledby="dropdownMenu2">
                             <li >
-                                <form action="" method="post">
+                                <form action="{% url 'login' %}" method="post">
                                     {% csrf_token %}
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Adres email</label>
@@ -40,8 +40,6 @@
                                 </form>
                             </li>
                             <li>Nie masz konta?  <a href="{% url 'register' %}" style=" letter-spacing: 0;color: black">Zarejestruj się!</a></li>
-
-
                         </ul>
                     </div>
                 </li>

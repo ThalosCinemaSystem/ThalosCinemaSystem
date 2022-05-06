@@ -18,7 +18,7 @@ def login(request):
     return render(request, 'authentication/login.html', {})
 
 
-@unauthenticated(url='home')
+@unauthenticated(url='main_page')
 def register(request):
     form = UserRegisterForm()
     if request.method == "POST":
