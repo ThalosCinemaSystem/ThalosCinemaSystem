@@ -36,7 +36,6 @@ class Movie(models.Model):
     description = models.CharField(max_length=1024, null=True)
     during = models.IntegerField(null=True)
     thumbnail = models.ImageField(upload_to='movies_images')
-    genre = models.CharField(max_length=30, null=True)
     url_trailer = models.CharField(max_length=30, null=True)
 
     def __str__(self):
@@ -52,6 +51,24 @@ class Movie(models.Model):
             blob_service.delete_blob()
             super(Movie, self).delete(*args, **kwargs)
 
+class Genre(models.Model):
+    names = (
+        ('Dramat', 'Dramat'),
+        ('Horror', 'Horror'),
+        ('Akcji', 'Akcji'),
+        ('Komedia', 'Komedia'),
+        ('Romantyczny', 'Romantyczny'),
+        ('Wojenny', 'Wojenny'),
+        ('Kryminalny', 'Kryminalny'),
+        ('Fantasy', 'Fantasy'),
+        ('Sci-Fi', 'Sci-Fi'),
+        ('Thriller', 'Thriller'),
+
+    )
+    name = models.CharField(max_length=20, null=True, choices=names)
+    movie = models.ForeignKey(Movie, null=True, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
 
 class Room(models.Model):
     number = models.IntegerField(null=True)
@@ -79,7 +96,7 @@ class Projection(models.Model):
     )
     start_date_time = models.DateTimeField(null=True)
     is_3d = models.BooleanField(default=False)
-    type_projection = models.CharField(max_length=200, null=True, choices=types)
+    type_projection = models.CharField(max_length=20, null=True, choices=types)
     price = models.FloatField(null=True)
     movie = models.ForeignKey(Movie, null=True, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, null=True, on_delete=models.CASCADE)
