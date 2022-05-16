@@ -25,6 +25,7 @@ urlpatterns = [
     path('auth/', include('authentication.urls'))
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'website.views.error_404'
 handler500 = 'website.views.error_500'
