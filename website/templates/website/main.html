@@ -124,7 +124,7 @@
             <img src="{{ value.Thumbnail }}" alt="">
 
             <div>
-                <h5 class="h-main repertoire-h">{{ value.title }}</h5>
+                <h5 class="h-main repertoire-h"><a href="/book/{{ value.projection_id }}/">{{ value.title }}</a></h5>
                 <div class="repertoire-movie-type-icon">
                     {% for i in value.Genre %}
                         <button type="submit" class="navbar-button btn">{{ i }}</button>
