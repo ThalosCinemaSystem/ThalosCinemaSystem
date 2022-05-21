@@ -6,6 +6,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.utils.dateparse import parse_datetime
 from .models import *
 import datetime
+from django.contrib.auth.decorators import login_required
 
 
 def main_page(request, pk=None, pk2=None, pk3='ALL', pk4=1):
@@ -36,6 +37,7 @@ def main_page(request, pk=None, pk2=None, pk3='ALL', pk4=1):
             projections[i.movie.title]['Thumbnail'] = i.movie.thumbnail.url
             projections[i.movie.title]['start_date_time'] = []
             projections[i.movie.title]['Genre'] = Genre.objects.filter(movie__title=i.movie.title)
+            projections[i.movie.title]['projection_id'] = i.pk
             id = id + 1
 
         projections[i.movie.title]['start_date_time'].append(i.start_date_time)
@@ -120,3 +122,23 @@ def change_password(request):
         })
     else:
         return redirect(main_page)
+
+
+def book_movie(request, projection_pk):
+    projection = Projection.objects.get(pk=projection_pk)
+    context = {'projection': projection}
+
+    if not request.COOKIES.get('projection_choice_id'):
+        if request.META.get('HTTP_REFERER') == request.build_absolute_uri():
+            return render(request, 'website/projection_to_reservation.html', context=context)
+
+        elif request.GET.get('movie') == 'selected':
+            response = render(request, 'website/choice_seat.html', context=context)
+            response.set_cookie(key='projection_choice_id', value=projection_pk)
+            return response
+
+        return render(request, 'website/projection_to_reservation.html', context=context)
+
+    return render(request, 'website/choice_seat.html', context=context)
+
+

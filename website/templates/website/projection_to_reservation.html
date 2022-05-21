@@ -1,0 +1,10 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% block content %}
+    <br><br/><br><br/><br><br/><br><br/>
+    <img src="{{ projection.movie.thumbnail.url }}"/>
+    <h1 class="display-6">Tytuł: {{ projection.movie.title }}</h1>
+    <h1 class="display-6">Czas trwania: {{ projection.movie.during }}</h1>
+    <h1 class="display-6">Data i godzina: {{ projection.start_date_time }}</h1>
+    <h1 class="display-6"><a href="?movie=selected">Zarezerwuj</a></h1>
+{% endblock %}
