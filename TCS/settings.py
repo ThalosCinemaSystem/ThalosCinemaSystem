@@ -142,8 +142,8 @@ CORS_ALLOW_METHODS = [
     "PUT",
 ]
 
-CORS_ALLOWED_ORIGINS = ['https://thalos.software', 'https://thalos-qa.azurewebsites.net']
-CSRF_TRUSTED_ORIGINS = ['https://thalos.software', 'https://thalos-qa.azurewebsites.net']
+CORS_ALLOWED_ORIGINS = ['https://thalos.software', 'https://thalosqa.azurewebsites.net']
+CSRF_TRUSTED_ORIGINS = ['https://thalos.software', 'https://thalosqa.azurewebsites.net']
 
 
 try:
