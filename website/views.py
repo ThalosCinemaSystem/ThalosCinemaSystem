@@ -126,7 +126,12 @@ def change_password(request):
 
 def book_movie(request, projection_pk):
     projection = Projection.objects.get(pk=projection_pk)
-    context = {'projection': projection}
+    seats = Seat.objects.filter(room=projection.room).all()
+    context = {'projection': projection,
+               'room': projection.room,
+               'seats': seats}
+    if request.method == "POST":
+        seats = request.POST.get('seats')
 
     if not request.COOKIES.get('projection_choice_id'):
         if request.META.get('HTTP_REFERER') == request.build_absolute_uri():
@@ -139,6 +144,11 @@ def book_movie(request, projection_pk):
 
         return render(request, 'website/projection_to_reservation.html', context=context)
 
+    if request.GET.get('reservation') == 'intterup':
+        if request.COOKIES.get('projection_choice_id'):
+            response = redirect('main_page')
+            response.delete_cookie('projection_choice_id')
+
+            return response
+
     return render(request, 'website/choice_seat.html', context=context)
-
-
