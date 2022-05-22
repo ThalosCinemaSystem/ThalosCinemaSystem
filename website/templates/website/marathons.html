@@ -3,46 +3,23 @@
 
 {% block content %}
 <div class="marathons-section">
-    <h5 class="h-main marathons-section-h">Maratony Filmowe</h5>
-    <div class="marathons-row">
-        <div class="marathon-label">
-            <div class="marathon-cont">
-                <h5 class="d-md-block h-main h-main-title-marathon" >Nocny Mdsdfsdf sdfsat</h5>
-                <p class="marathon-price">27,50zł</p><br>
-                <p class="marathon-price" style="margin-left: 10px; background: #B6B6B6">21.12</p>
-            </div>
-            <div class="maraton-desc">
-                <img class="marathon-img-mobile" src="{% static 'images/maratons.png' %}" alt="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie tincidunt nisl, quis facilisis ex consequat quis. Pellentesque placerat turpis non lobortis commodo. Duis ut justo bibendum, ultricies lorem sed, tempus elit. Cras bibendum odio at ante scelerisque commodo. Etiam non laoreet tellus, in semper lacus. Aliquam lacus ligula, pharetra convallis imperdiet id, interdum in metus. Aenean sit amet urna tincidunt, mattis urna pharetra, sagittis nunc. Duis arcu diam, suscipit sed nunc condimentum, rhoncus sagittis nulla. Morbi ut libero turpis.</p>
-            </div>
-        </div>
-    </div>
-    <div class="marathons-row">
-        <div class="marathon-label">
-            <div class="marathon-cont">
-                <h5 class="d-md-block h-main h-main-title-marathon" >Nocny Mdsdfsdf sdfsat</h5>
-                <p class="marathon-price">27,50zł</p><br>
-                <p class="marathon-price" style="margin-left: 10px; background: #B6B6B6">21.12</p>
-            </div>
-            <div class="maraton-desc">
-                <img class="marathon-img-mobile" src="{% static 'images/maratons.png' %}" alt="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie tincidunt nisl, quis facilisis ex consequat quis. Pellentesque placerat turpis non lobortis commodo. Duis ut justo bibendum, ultricies lorem sed, tempus elit. Cras bibendum odio at ante scelerisque commodo. Etiam non laoreet tellus, in semper lacus. Aliquam lacus ligula, pharetra convallis imperdiet id, interdum in metus. Aenean sit amet urna tincidunt, mattis urna pharetra, sagittis nunc. Duis arcu diam, suscipit sed nunc condimentum, rhoncus sagittis nulla. Morbi ut libero turpis.</p>
+    <h5 class="h-main marathons-section-h">{{ marathon.title }}</h5>
+    {% for projection in projections %}
+        <div class="marathons-row">
+            <div class="marathon-label">
+                <div class="marathon-cont">
+                    <h5 class="d-md-block h-main h-main-title-marathon" >{{ projection.movie.title }}</h5>
+                    <p class="marathon-price">{{ projection.movie.title }}</p><br>
+                    <p class="marathon-price" style="margin-left: 10px; background: #B6B6B6">{{ projection.start_date_time }}</p>
+                </div>
+                <div class="maraton-desc">
+                    <img class="marathon-img-mobile" src="{{ projection.movie.thumbnail.url }}" alt="">
+                    <p>{{ projection.movie.description }}</p>
+                </div>
+
             </div>
         </div>
-    </div>
-    <div class="marathons-row">
-        <div class="marathon-label">
-            <div class="marathon-cont">
-                <h5 class="d-md-block h-main h-main-title-marathon" >Nocny Mdsdfsdf sdfsat</h5>
-                <p class="marathon-price">27,50zł</p><br>
-                <p class="marathon-price" style="margin-left: 10px; background: #B6B6B6">21.12</p>
-            </div>
-            <div class="maraton-desc">
-                <img class="marathon-img-mobile" src="{% static 'images/maratons.png' %}" alt="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie tincidunt nisl, quis facilisis ex consequat quis. Pellentesque placerat turpis non lobortis commodo. Duis ut justo bibendum, ultricies lorem sed, tempus elit. Cras bibendum odio at ante scelerisque commodo. Etiam non laoreet tellus, in semper lacus. Aliquam lacus ligula, pharetra convallis imperdiet id, interdum in metus. Aenean sit amet urna tincidunt, mattis urna pharetra, sagittis nunc. Duis arcu diam, suscipit sed nunc condimentum, rhoncus sagittis nulla. Morbi ut libero turpis.</p>
-            </div>
-        </div>
-    </div>
+    {% endfor %}
 
 </div>
 {% endblock %}

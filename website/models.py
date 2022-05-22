@@ -33,7 +33,7 @@ class Cinema(models.Model):
 
 
 class Movie(models.Model):
-    title = models.CharField(max_length=30, null=True)
+    title = models.CharField(max_length=255, null=True)
     description = models.CharField(max_length=1024, null=True)
     during = models.IntegerField(null=True)
     thumbnail = models.ImageField(upload_to='movies_images')
@@ -113,6 +113,16 @@ class Marathon(models.Model):
     description = models.CharField(max_length=1024, null=True)
     price = models.FloatField(null=True)
     thumbnail = models.ImageField(null=True, blank=True)
+
+    try:
+        os.environ["IS_PRODUCTION"]
+    except KeyError:
+        pass
+    else:
+        def delete(self, *args, **kwargs):
+            blob_service = get_blob_service(container_name='media', blob_name=self.thumbnail.name)
+            blob_service.delete_blob()
+            super(Marathon, self).delete(*args, **kwargs)
 
 
 class Projection(models.Model):
