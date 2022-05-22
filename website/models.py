@@ -11,6 +11,7 @@ else:
     from TCS.settings import AZURE_CUSTOM_DOMAIN, AZURE_ACCOUNT_NAME
     from TCS.custom_azure import ACCOUNT_KEY
 
+
     def get_blob_service(container_name, blob_name):
         account_url = AZURE_CUSTOM_DOMAIN
         credential = {"account_name": AZURE_ACCOUNT_NAME,
@@ -51,6 +52,7 @@ class Movie(models.Model):
             blob_service.delete_blob()
             super(Movie, self).delete(*args, **kwargs)
 
+
 class Genre(models.Model):
     names = (
         ('Dramat', 'Dramat'),
@@ -67,12 +69,30 @@ class Genre(models.Model):
     )
     name = models.CharField(max_length=20, null=True, choices=names)
     movie = models.ForeignKey(Movie, null=True, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.name
+
 
 class Room(models.Model):
     number = models.IntegerField(null=True)
     cinema = models.ForeignKey(Cinema, null=True, on_delete=models.CASCADE)
+
+    def save(self, *args, **kwargs):
+        if not Seat.objects.filter(room=self):
+            super(Room, self).save(*args, **kwargs)
+            seat_objs = [Seat(seat_number=seat_number,
+                              number_of_row=None,
+                              number_of_column=None,
+                              room=self)
+                         for seat_number in range(1, 26)]
+
+            Seat.objects.bulk_create(seat_objs)
+
+    def delete(self, *args, **kwargs):
+        seats = Seat.objects.filter(room=self).all()
+        seats.delete()
+        super(Room, self).delete(*args, **kwargs)
 
     def __str__(self):
         return str(self.number)
@@ -85,7 +105,7 @@ class Seat(models.Model):
     room = models.ForeignKey(Room, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.seat_number)
+        return str(f'Seat Number: {self.seat_number} - Room Number: {self.room}')
 
 
 class Projection(models.Model):

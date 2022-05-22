@@ -1,6 +1,17 @@
 {% extends 'website/base.html' %}
 {% load static %}
 {% block content %}
-    <br><br/><br><br/><br><br/><br><br/>
-    SIEDZENIA
+    <br><br/><br><br/>
+    <br><br/>
+
+    <form action="" method="post">
+    {% csrf_token %}
+        {% for seat in seats %}
+          <input type="checkbox" name="seats" value="{{ seat.seat_number }}" /> {{ seat.seat_number }}
+        {% endfor %}
+        <button type="submit">Wybierz miejsca</button>
+    </form>
+
+
+    <a href="?reservation=intterup">Przerwj rezerwację</a>
 {% endblock %}
