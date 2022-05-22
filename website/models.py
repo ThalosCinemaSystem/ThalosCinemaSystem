@@ -22,11 +22,11 @@ else:
 
 
 class Cinema(models.Model):
-    city = models.CharField(max_length=30, null=True)
-    street = models.CharField(max_length=30, null=True)
-    country = models.CharField(max_length=30, null=True)
-    name = models.CharField(max_length=30, null=True)
-    address = models.CharField(max_length=30, null=True)
+    city = models.CharField(max_length=255, null=True)
+    street = models.CharField(max_length=255, null=True)
+    country = models.CharField(max_length=255, null=True)
+    name = models.CharField(max_length=255, null=True)
+    address = models.CharField(max_length=255, null=True)
 
     def __str__(self):
         return self.name
@@ -37,7 +37,7 @@ class Movie(models.Model):
     description = models.CharField(max_length=1024, null=True)
     during = models.IntegerField(null=True)
     thumbnail = models.ImageField(upload_to='movies_images')
-    url_trailer = models.CharField(max_length=30, null=True)
+    url_trailer = models.CharField(max_length=255, null=True)
 
     def __str__(self):
         return self.title
@@ -108,6 +108,13 @@ class Seat(models.Model):
         return str(f'Seat Number: {self.seat_number} - Room Number: {self.room}')
 
 
+class Marathon(models.Model):
+    name = models.CharField(max_length=30, null=True)
+    description = models.CharField(max_length=1024, null=True)
+    price = models.FloatField(null=True)
+    thumbnail = models.ImageField(null=True, blank=True)
+
+
 class Projection(models.Model):
     types = (
         ('Lektor', 'Lektor'),
@@ -120,6 +127,7 @@ class Projection(models.Model):
     price = models.FloatField(null=True)
     movie = models.ForeignKey(Movie, null=True, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, null=True, on_delete=models.CASCADE)
+    marathon = models.ForeignKey(Marathon, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.movie.title
@@ -132,10 +140,3 @@ class Reservation(models.Model):
 
     def __str__(self):
         return self.user.get_username()
-
-
-class Marathon(models.Model):
-    name = models.CharField(max_length=30, null=True)
-    description = models.CharField(max_length=1024, null=True)
-    price = models.FloatField(null=True)
-    thumbnail = models.ImageField(null=True, blank=True)

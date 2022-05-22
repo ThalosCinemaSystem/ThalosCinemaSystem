@@ -9,9 +9,9 @@ import datetime
 from django.contrib.auth.decorators import login_required
 
 
-def main_page(request, pk=None, pk2=None, pk3='ALL', pk4=1):
-    pk = Cinema.objects.first()
-    pk2 = datetime.date.today().strftime('%Y-%m-%d')
+def main_page(request, pk=Cinema.objects.first(), pk2=None, pk3='ALL', pk4=1):
+    if pk2 is None:
+        pk2 = datetime.date.today().strftime('%Y-%m-%d')
 
     projection = Projection.objects.filter(room__cinema__name=pk)
     projection = projection.filter(start_date_time__contains=pk2)
