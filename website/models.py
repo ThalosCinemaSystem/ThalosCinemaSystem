@@ -85,7 +85,7 @@ class Room(models.Model):
                               number_of_row=None,
                               number_of_column=None,
                               room=self)
-                         for seat_number in range(1, 26)]
+                         for seat_number in range(0, 100)]
 
             Seat.objects.bulk_create(seat_objs)
 
