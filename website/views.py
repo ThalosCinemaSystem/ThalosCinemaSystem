@@ -83,6 +83,10 @@ def repertoire(request):
 
     return render(request, 'website/repertoire.html', context=context)
 
+def payments(request):
+    context = {}
+
+    return render(request, 'website/payments.html', context=context)
 
 def error_404(request, exception):
     data = {"error_http": "Błąd 404"}

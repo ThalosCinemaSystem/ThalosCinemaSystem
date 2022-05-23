@@ -76,6 +76,9 @@
             </button>
         </div>
     </div>
+
+
+
     <!--repertoire-->
     <div class="repertoire">
         <div>
@@ -118,6 +121,7 @@
                 <li><a class="dropdown-item" href="#">Link 3</a></li>
             </ul>
         </div>
+    <p><a class="nav-link text-dark" href="{% url 'payments' %}"><span class="nav-link-text {% if url_name == 'payments' %}nav_active{% endif %}">Płatność</span></a></p>
     </div>
     {% for key, value in projections.items %}
         <div class="repertoire-movie">
