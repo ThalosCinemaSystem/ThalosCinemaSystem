@@ -1,10 +1,24 @@
 {% extends 'website/base.html' %}
 {% load static %}
 {% block content %}
-    <br><br/><br><br/><br><br/><br><br/>
-    <img src="{{ projection.movie.thumbnail.url }}"/>
-    <h1 class="display-6">Tytuł: {{ projection.movie.title }}</h1>
-    <h1 class="display-6">Czas trwania: {{ projection.movie.during }}</h1>
-    <h1 class="display-6">Data i godzina: {{ projection.start_date_time }}</h1>
-    <h1 class="display-6"><a href="?movie=selected">Zarezerwuj</a></h1>
+    <div class="content-container projection-container">
+        <div class=" d-flex">
+            <img src="{{ projection.movie.thumbnail.url }}"/>
+            <div class="projection-desc">
+                <h1 style="margin-top: 0"class="h-main">{{ projection.movie.title }}</h1>
+                <h1 class="navbar-button btn">{{ projection.movie.during }}min</h1>
+                <h1 class="navbar-button btn btn-hour">{{ projection.start_date_time|date:"d.m" }}</h1>
+                <p style="margin: 15px 0">{{ projection.movie.description }}</p>
+                <button class="navbar-button btn"><a href="?movie=selected">Zarezerwuj</a></button>
+            </div>
+
+        </div>
+        <div class="trailer-container">
+            <h1 class="h-main">Zwiastun</h1>
+            <iframe width="850" height="480" src="{{projection.movie.url_trailer }}" title="YouTube video player" frameborder="0" allow="accelerometer;
+             autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+    </div>
+
+
 {% endblock %}
