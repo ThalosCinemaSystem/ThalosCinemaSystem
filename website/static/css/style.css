@@ -44,7 +44,16 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
+a{
+	text-decoration: none;
+	color: #212529;
+}
+a:hover{
+	color: black;
+}
+.repertoire-days-a:hover{
+	color: #F4BCBC;
+}
 /*navbar*/
 .navbar-main
 {
@@ -87,7 +96,6 @@ table {
 .navbar-button
 {
 	background: #FFE818;
-	width: 120px;
 	font-family: 'Roboto';
 	font-size: 16px;
 	font-weight: bold;
@@ -325,6 +333,7 @@ footer
 	color: white;
 	padding: 40px 40px;
 	margin-top: 0px!important;
+	box-sizing: border-box;
 }
 footer h5
 {
@@ -423,6 +432,34 @@ footer p
 	width: 100vw;
 	padding: 0 10px;
 }
+.btn-hour
+{
+	background: none;
+	border: 1px solid;
+}
+.projection-container img
+{
+
+}
+.btn a:hover
+{
+	color: black;
+}
+.projection-desc
+{
+	padding: 0 25px;
+}
+.trailer-container
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.trailer-container h1
+{
+	margin: 40px;
+}
 @media screen and (max-width: 991px) {
 .login-form{
 	position: absolute!important;
@@ -483,6 +520,13 @@ footer p
 		padding: 100px 50px 70px;
 	}
 }
+.content-container{
+	padding-top: 88px;
+	min-height: calc(100vh - 216px);
+}
+.projection-container{
+	padding: 158px 400px 50px;
+}
 @media screen and (min-width: 768px) {
 	.maraton-desc{
 		margin: 0 50px
@@ -493,7 +537,7 @@ footer p
 	}
 	.repertoire .buttons
 	{
-		margin-top: 98px;
+		margin-top: 70px;
 	}
 	.repertoire
 	{
