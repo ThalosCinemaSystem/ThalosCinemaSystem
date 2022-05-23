@@ -1,17 +1,25 @@
 {% extends 'website/base.html' %}
 {% load static %}
 {% block content %}
-    <br><br/><br><br/>
-    <br><br/>
+    <div class="content-container projection-container choice-seat-container">
+        <form action="" method="post">
+        {% csrf_token %}
+                {% for row_seats in divided_seats %}
+                    <div class="seat-group">
+                        <div class="number-seat-row">{{ forloop.counter }}</div>
+                        {% for seat in row_seats %}
+                        <input id="{{seat}}" type="radio" name="seats" value="{{ seat.seat_number }}" />
+                        <label for="{{seat}}"><span class="material-symbols-outlined">living</span></label>
+                        {% endfor %}
+                    </div>
+             {% endfor %}
+            <div class="submit-container">
+                <button type="submit" class="navbar-button btn">Wybierz miejsce</button>
+                <button class="navbar-button btn btn-hour" href="?reservation=intterup">Przerwj rezerwację</button>
+            </div>
 
-    <form action="" method="post">
-    {% csrf_token %}
-        {% for seat in seats %}
-          <input type="checkbox" name="seats" value="{{ seat.seat_number }}" /> {{ seat.seat_number }}
-        {% endfor %}
-        <button type="submit">Wybierz miejsca</button>
-    </form>
+        </form>
 
+    </div>
 
-    <a href="?reservation=intterup">Przerwj rezerwację</a>
 {% endblock %}

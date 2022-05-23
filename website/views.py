@@ -127,9 +127,12 @@ def change_password(request):
 def book_movie(request, projection_pk):
     projection = Projection.objects.get(pk=projection_pk)
     seats = Seat.objects.filter(room=projection.room).all()
+    divided_seats = [seats[i:i + 10] for i in range(0, 100) if i % 10 == 0]
+
     context = {'projection': projection,
                'room': projection.room,
-               'seats': seats}
+               'divided_seats': divided_seats}
+
     if request.method == "POST":
         seats = request.POST.get('seats')
 
