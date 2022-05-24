@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'website',
     'authentication',
     'corsheaders',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -171,3 +172,8 @@ else:
 
     CORS_ALLOWED_ORIGINS.append(f'https://{AZURE_CUSTOM_DOMAIN}')
     CSRF_TRUSTED_ORIGINS.append(f'https://{AZURE_CUSTOM_DOMAIN}')
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
