@@ -1,14 +1,10 @@
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
-from django.template import RequestContext
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
-from django.utils.dateparse import parse_datetime
 from .models import *
 import datetime
 from django.contrib.auth.decorators import login_required
-from django.contrib.sessions.backends.db import SessionStore
-from django.contrib.sessions.models import Session
 
 
 def main_page(request, pk=Cinema.objects.first(), pk2=None, pk3='ALL', pk4=1):
@@ -108,11 +104,13 @@ def error_500(request):
     return render(request, 'website/error_http.html', context=data)
 
 
-def logoutUser(request):
+@login_required(login_url='main_page')
+def logout_user(request):
     logout(request)
     return redirect(main_page)
 
 
+@login_required(login_url='main_page')
 def change_password(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
@@ -138,6 +136,7 @@ def book_movie(request, movie_pk, room=None, hour=None):
     return render(request, 'website/projection_to_reservation.html', context=context)
 
 
+@login_required(login_url='main_page')
 def book_movie_projection(request, movie_pk, projection_pk):
     seats = Seat.objects.filter(room__projection=projection_pk)
     divided_seats = [seats[i:i + 10] for i in range(0, 100) if i % 10 == 0]
@@ -160,6 +159,7 @@ def book_movie_projection(request, movie_pk, projection_pk):
     return render(request, 'website/choice_seat.html', context=context)
 
 
+@login_required(login_url='main_page')
 def reservation_summary(request):
     projection_id = request.session.get('projection_id_reserving', False)
     seat_id = request.session.get('seat_id_reserving', False)
