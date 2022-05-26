@@ -103,9 +103,16 @@ class Seat(models.Model):
     number_of_column = models.IntegerField(null=True)
     number_of_row = models.IntegerField(null=True)
     room = models.ForeignKey(Room, null=True, on_delete=models.CASCADE)
+    is_durning_reservation = models.BooleanField(default=False)
 
     def __str__(self):
         return str(f'Seat Number: {self.seat_number} - Room Number: {self.room}')
+
+    @property
+    def is_reservated(self):
+        if Reservation.objects.filter(seat_id=self).first():
+            return True
+        return False
 
 
 class Marathon(models.Model):
