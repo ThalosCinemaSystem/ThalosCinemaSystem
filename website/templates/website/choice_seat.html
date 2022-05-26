@@ -4,18 +4,29 @@
     <div class="content-container projection-container choice-seat-container">
         <form action="" method="post">
         {% csrf_token %}
+                <button class="navbar-button btn" style="width: 100%; pointer-events: none; margin-bottom: 20px;">Sala numer {{ divided_seats.0.0.room.number }}</button>
                 {% for row_seats in divided_seats %}
                     <div class="seat-group">
                         <div class="number-seat-row">{{ forloop.counter }}</div>
                         {% for seat in row_seats %}
-                        <input id="{{seat}}" type="radio" name="seats" value="{{ seat.seat_number }}" />
-                        <label for="{{seat}}"><span class="material-symbols-outlined">living</span></label>
+                            {% if seat.is_reservated %}
+                                <input id="{{seat}}" type="radio" name="seat" value="{{ seat.pk }}" />
+                                <label style="pointer-events: none; color: red;" for="{{seat}}"><span class="material-symbols-outlined">living</span></label>
+                            {% elif seat.is_durning_reservation %}
+                                <input id="{{seat}}" type="radio" name="seat" value="{{ seat.pk }}" />
+                                <label style="pointer-events: none; color: blue;" for="{{seat}}"><span class="material-symbols-outlined">living</span></label>
+                            {% else %}
+                                <input id="{{seat}}" type="radio" name="seat" value="{{ seat.pk }}" />
+                                <label for="{{seat}}"><span class="material-symbols-outlined">living</span></label>
+                            {% endif %}
                         {% endfor %}
                     </div>
              {% endfor %}
             <div class="submit-container">
                 <button type="submit" class="navbar-button btn">Wybierz miejsce</button>
-                <button class="navbar-button btn btn-hour" href="?reservation=intterup">Przerwj rezerwację</button>
+                <a href="?reservation=intterup">
+                    <button type="button" class="navbar-button btn btn-hour">Przerwj rezerwację</button>
+                </a>
             </div>
 
         </form>
