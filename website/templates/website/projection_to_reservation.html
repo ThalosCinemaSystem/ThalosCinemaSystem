@@ -1,0 +1,31 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="content-container projection-container">
+        <div class=" d-flex">
+            <img src="{{ projections.0.movie.thumbnail.url }}"/>
+            <div class="projection-desc">
+                <h1 style="margin-top: 0" class="h-main">{{ projections.0.movie.title }}</h1>
+                <h1 style="pointer-events: none" class="navbar-button btn">{{ projections.0.movie.during }} min</h1>
+                <h1 style="pointer-events: none" class="navbar-button btn btn-hour">{{ projections.0.start_date_time|date:"d.m" }}</h1>
+                <p style="margin: 15px 0">{{ projections.0.movie.description }}</p>
+                    <div class="repertoire-movie-type-icon hour-icon">
+                        {% for projection in projections %}
+                            <a href="projection/{{ projection.id }}">
+                                <button type="button" name="hour" value="{{ projection.id }}" class="navbar-button btn">{{ projection.start_date_time|time:"H:i" }}</button>
+                            </a>
+                        {% endfor %}
+                    </div>
+                <br>
+            </div>
+
+        </div>
+        <div class="trailer-container">
+            <h1 class="h-main">Zwiastun</h1>
+            <iframe width="850" height="480" src="{{projections.0.movie.url_trailer }}" title="YouTube video player" frameborder="0" allow="accelerometer;
+             autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+    </div>
+
+
+{% endblock %}

@@ -89,7 +89,7 @@
             </ul>
             <div class="repertoire-days">
                 {% for key, value in Date.items %}
-                    <p><a href="/{{ pk }}/{{ value.Day }}/{{ pk3 }}">{{ value.Name }}</a></p>
+                    <p><a href="/{{ pk }}/{{ value.Day }}/{{ pk3 }}" class="repertoire-days-a">{{ value.Name }}</a></p>
                 {% endfor %}
                 <p><span class="material-symbols-outlined">calendar_month</span></p>
             </div>
@@ -124,7 +124,7 @@
             <img src="{{ value.Thumbnail }}" alt="">
 
             <div>
-                <h5 class="h-main repertoire-h">{{ value.title }}</h5>
+                <h5 class="h-main repertoire-h"><a href="/book/movie/{{ value.projection_movie_id }}/" class="repertoire-days-a">{{ value.title }}</a></h5>
                 <div class="repertoire-movie-type-icon">
                     {% for i in value.Genre %}
                         <button type="submit" class="navbar-button btn">{{ i }}</button>
@@ -133,7 +133,7 @@
                 </div>
                 <div class="repertoire-movie-type-icon hour-icon">
                     {% for i in value.start_date_time %}
-                        <button type="submit" class="navbar-button btn">{{ i|date:"h:i" }}</button>
+                        <button type="submit" class="navbar-button btn">{{ i|date:"H:i" }}</button>
                     {% endfor %}
                 </div>
             </div>
