@@ -149,7 +149,7 @@ class Projection(models.Model):
     movie = models.ForeignKey(Movie, null=True, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, null=True, on_delete=models.CASCADE)
     marathon = models.ForeignKey(Marathon, blank=True, null=True, on_delete=models.CASCADE)
-    is_cyclic = models.BooleanField()
+    is_cyclic = models.BooleanField(default=False, null=True)
 
     def __str__(self):
         return f'{self.movie.title} - {self.start_date_time} - Room: {self.room.number} - IS_CYCLIC: {self.is_cyclic}'
