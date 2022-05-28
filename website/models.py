@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from azure.storage.blob import BlobClient
 import os
+from datetime import timedelta
 
 try:
     os.environ["IS_PRODUCTION"]
@@ -130,6 +131,9 @@ class Marathon(models.Model):
             blob_service = get_blob_service(container_name='media', blob_name=self.thumbnail.name)
             blob_service.delete_blob()
             super(Marathon, self).delete(*args, **kwargs)
+            
+    def __str__(self):
+        return f'{self.name}'
 
 
 class Projection(models.Model):
@@ -144,10 +148,26 @@ class Projection(models.Model):
     price = models.FloatField(null=True)
     movie = models.ForeignKey(Movie, null=True, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, null=True, on_delete=models.CASCADE)
-    marathon = models.ForeignKey(Marathon, null=True, on_delete=models.CASCADE)
+    marathon = models.ForeignKey(Marathon, blank=True, null=True, on_delete=models.CASCADE)
+    is_cyclic = models.BooleanField()
 
     def __str__(self):
-        return self.movie.title
+        return f'{self.movie.title} - {self.start_date_time} - Room: {self.room.number} - IS_CYCLIC: {self.is_cyclic}'
+
+    def save(self, *args, **kwargs):
+        if self.is_cyclic:
+            projections = [Projection(start_date_time=self.start_date_time + timedelta(weeks=i),
+                                      is_3d=self.is_3d,
+                                      type_projection=self.type_projection,
+                                      price=self.price,
+                                      movie=self.movie,
+                                      room=self.room,
+                                      marathon=self.marathon,
+                                      is_cyclic=self.is_cyclic)
+                           for i in range(0, 10)]
+            Projection.objects.bulk_create(projections)
+        else:
+            super(Projection, self).save(*args, **kwargs)
 
 
 class Reservation(models.Model):
