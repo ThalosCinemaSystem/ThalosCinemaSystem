@@ -32,6 +32,13 @@ class Cinema(models.Model):
     def __str__(self):
         return self.name
 
+class Genre(models.Model):
+
+    name = models.CharField(max_length=20, null=True)
+
+    def __str__(self):
+        return self.name
+
 
 class Movie(models.Model):
     title = models.CharField(max_length=255, null=True)
@@ -39,6 +46,8 @@ class Movie(models.Model):
     during = models.IntegerField(null=True)
     thumbnail = models.ImageField(upload_to='movies_images')
     url_trailer = models.CharField(max_length=255, null=True)
+    genre = models.ManyToManyField(Genre)
+
 
     def __str__(self):
         return self.title
@@ -51,28 +60,7 @@ class Movie(models.Model):
         def delete(self, *args, **kwargs):
             blob_service = get_blob_service(container_name='media', blob_name=self.thumbnail.name)
             blob_service.delete_blob()
-            super(Movie, self).delete(*args, **kwargs)
-
-
-class Genre(models.Model):
-    names = (
-        ('Dramat', 'Dramat'),
-        ('Horror', 'Horror'),
-        ('Akcji', 'Akcji'),
-        ('Komedia', 'Komedia'),
-        ('Romantyczny', 'Romantyczny'),
-        ('Wojenny', 'Wojenny'),
-        ('Kryminalny', 'Kryminalny'),
-        ('Fantasy', 'Fantasy'),
-        ('Sci-Fi', 'Sci-Fi'),
-        ('Thriller', 'Thriller'),
-
-    )
-    name = models.CharField(max_length=20, null=True, choices=names)
-    movie = models.ForeignKey(Movie, null=True, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
+            super(Movie, self).delete(*args, **kwargs)    
 
 
 class Room(models.Model):
@@ -98,7 +86,7 @@ class Room(models.Model):
     def __str__(self):
         return str(self.number)
 
-
+     
 class Seat(models.Model):
     seat_number = models.IntegerField(null=True)
     number_of_column = models.IntegerField(null=True)
@@ -106,15 +94,17 @@ class Seat(models.Model):
     room = models.ForeignKey(Room, null=True, on_delete=models.CASCADE)
     is_durning_reservation = models.BooleanField(default=False)
 
+
     def __str__(self):
         return str(f'Seat Number: {self.seat_number} - Room Number: {self.room}')
 
+      
     @property
     def is_reservated(self):
         if Reservation.objects.filter(seat_id=self).first():
             return True
         return False
-
+    
 
 class Marathon(models.Model):
     name = models.CharField(max_length=30, null=True)
