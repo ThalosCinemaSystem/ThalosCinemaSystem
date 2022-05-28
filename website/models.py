@@ -33,12 +33,20 @@ class Cinema(models.Model):
         return self.name
 
 
+class Genre(models.Model):
+    name = models.CharField(max_length=20, null=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Movie(models.Model):
     title = models.CharField(max_length=255, null=True)
     description = models.CharField(max_length=1024, null=True)
     during = models.IntegerField(null=True)
     thumbnail = models.ImageField(upload_to='movies_images')
     url_trailer = models.CharField(max_length=255, null=True)
+    genre = models.ManyToManyField(Genre)
 
     def __str__(self):
         return self.title
@@ -52,27 +60,6 @@ class Movie(models.Model):
             blob_service = get_blob_service(container_name='media', blob_name=self.thumbnail.name)
             blob_service.delete_blob()
             super(Movie, self).delete(*args, **kwargs)
-
-
-class Genre(models.Model):
-    names = (
-        ('Dramat', 'Dramat'),
-        ('Horror', 'Horror'),
-        ('Akcji', 'Akcji'),
-        ('Komedia', 'Komedia'),
-        ('Romantyczny', 'Romantyczny'),
-        ('Wojenny', 'Wojenny'),
-        ('Kryminalny', 'Kryminalny'),
-        ('Fantasy', 'Fantasy'),
-        ('Sci-Fi', 'Sci-Fi'),
-        ('Thriller', 'Thriller'),
-
-    )
-    name = models.CharField(max_length=20, null=True, choices=names)
-    movie = models.ForeignKey(Movie, null=True, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
 
 
 class Room(models.Model):
@@ -131,7 +118,7 @@ class Marathon(models.Model):
             blob_service = get_blob_service(container_name='media', blob_name=self.thumbnail.name)
             blob_service.delete_blob()
             super(Marathon, self).delete(*args, **kwargs)
-            
+
     def __str__(self):
         return f'{self.name}'
 

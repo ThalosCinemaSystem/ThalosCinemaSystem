@@ -7,14 +7,14 @@ import datetime
 from django.contrib.auth.decorators import login_required
 
 
-def main_page(request, pk=Cinema.objects.first(), pk2=None, pk3='ALL', pk4=1):
+def main_page(request, pk=Cinema.objects.first(), pk2=None, pk3=None, pk4=1):
     if pk2 is None:
         pk2 = datetime.date.today().strftime('%Y-%m-%d')
 
     projection = Projection.objects.filter(room__cinema__name=pk)
     projection = projection.filter(start_date_time__contains=pk2)
-    if pk3 != 'ALL':
-        projection = projection.filter(movie__title__contains=Genre.objects.filter(name=pk3).values('movie_id__title'))
+    if pk3 is not None and pk3 != 'None':
+        projection = projection.filter(movie_id__genre__name=pk3)
     weekend = ["NIEDZ", "PON", "WT", "ŚR", "CZW", "PT", "SOB"]
     Date = {}
     Date[0] = {}
@@ -55,8 +55,10 @@ def main_page(request, pk=Cinema.objects.first(), pk2=None, pk3='ALL', pk4=1):
         if y['id'] not in range(pk4 * 5 - 5, pk4 * 5):
             del projections[x]
     cinemas = Cinema.objects.all()
+    genres = Genre.objects.all()
+    releases = Projection.objects.filter(start_date_time__gte=datetime.date.today() + datetime.timedelta(days=7)).values('movie_id','movie_id__title','movie_id__thumbnail', 'movie_id__description').distinct()[:3]
     context = {'cinemas': cinemas, 'projections': projections, "Date": Date, "pk": pk, 'pk2': pk2, 'pk3': pk3,
-               'pk4': pk4, 'pages': pages}
+               'pk4': pk4, 'pages': pages, 'releases':releases,'genres':genres}
     return render(request, 'website/main.html', context=context)
 
 
