@@ -1,0 +1,23 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="content-container projection-container">
+        <h1>Rezerwacja</h1>
+        <h1>{{ projection.movie.title }}</h1>
+        <h1>{{ projection.start_date_time|date:"d.m.y" }}</h1>
+        <h1>{{ projection.start_date_time|time:"H:i" }}</h1>
+        <h1>{{ projection.type_projection }}</h1>
+        <h1>{{ projection.room.number }}</h1>
+        <h1>{{ seat.seat_number }}</h1>
+
+    <div class="submit-container">
+                <a href="?reservation=done">
+                    <button type="button" class="navbar-button btn">Zarezerwuj</button>
+                </a>
+                <a href="?reservation=interrupt">
+                    <button type="button" class="navbar-button btn btn-hour">Przerwj rezerwację</button>
+                </a>
+            </div>
+    </div>
+
+{% endblock %}
