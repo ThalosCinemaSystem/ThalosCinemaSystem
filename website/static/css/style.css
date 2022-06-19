@@ -380,6 +380,88 @@ footer p
 	justify-content: center;
 	align-items: center;
 }
+/*=============School Section===============*/
+.school-section-h
+{
+	font-size: 40px !important;
+	text-align:center;
+
+}
+.school-section
+{
+	padding-top:89px;
+	margin-bottom: 40px;
+	margin-right: 200px;
+	margin-left: 200px;
+}
+
+.school-desc
+{
+	text-align: justify;
+	margin-right: 300px;
+	margin-left: 300px;
+	margin-top: 40px;
+}
+
+/*=============Promotion Section===============*/
+.promotion-section-h
+{
+	font-size: 60px !important;
+	text-align:center;
+
+}
+.promotion-section
+{
+	padding-top:89px;
+	margin-bottom: 40px;
+}
+.promotion-img
+{
+	width: 500px;
+	height: 300px;
+	margin: 0 10px 0 0;
+	float: left;
+
+}
+.promotion-row
+{
+
+}
+.promotion-label
+{
+
+}
+.promotion-cont
+{
+	/*margin-left: 200px;
+	margin-right: 200px;*/
+	display: flex;
+	align-items: center;
+	width: 100vw;
+	padding: 0 10px;
+	padding-left: 290px;
+
+}
+.promotion-desc
+{
+	margin: 0 290px;
+	min-height: 350px;
+	text-align: justify;
+	padding: 30px;
+
+}
+.h-main-title-promotion
+{
+	font-size: 40px !important;
+	width: 300px;
+	margin-right: 10px;
+}
+.promotion-descriptions
+{
+	padding-top: 30px;
+	padding-right: 80px;
+}
+/*=======================================================================*/
 /*Maratons Section*/
 .marathons-section
 {
@@ -401,6 +483,7 @@ footer p
 .marathons-row
 {
 }
+
 .marathon-price
 {
 	display: block;
@@ -746,3 +829,5 @@ footer p
 		padding-right: 175px!important;
 	}
 }
+
+
