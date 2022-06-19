@@ -64,9 +64,11 @@ def main_page(request, pk=Cinema.objects.first(), pk2=None, pk3=None, pk4=1):
 
 
 def marathons(request):
-    movies = Movie.objects.all()
+    marathon = Marathon.objects.first()
+    projections = Projection.objects.filter(marathon=marathon).all()
 
-    context = {'movies': movies}
+    context = {'marathon': marathon,
+               'projections': projections}
 
     return render(request, 'website/marathons.html', context=context)
 
