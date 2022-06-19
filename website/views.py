@@ -145,7 +145,8 @@ def book_movie_projection(request, movie_pk, date, projection_pk):
     seats_are_reservated = [reservation.seat for reservation in reservations]
 
     seats = Seat.objects.filter(room__projection=projection_pk)
-    divided_seats = [seats[i:i + 10] for i in range(0, 100) if i % 10 == 0]
+    seats_sorted = sorted(seats, key=lambda seat: seat.seat_number)
+    divided_seats = [seats_sorted[i:i + 10] for i in range(0, 100) if i % 10 == 0]
 
     if request.method == 'POST':
         seat_pk = request.POST.get('seat')
