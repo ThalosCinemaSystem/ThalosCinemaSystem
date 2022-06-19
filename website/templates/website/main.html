@@ -104,13 +104,6 @@
             <li><a class="dropdown-item" href="/repertuar/{{ pk }}/{{ pk2 }}/{{genre.name}}">{{genre.name}}</a></li>
             {% endfor %}
         </ul>
-        <button type="button" class="btn navbar-button dropdown-toggle" data-bs-toggle="dropdown">Najwyższa ocena
-        </button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Link 1</a></li>
-            <li><a class="dropdown-item" href="#">Link 2</a></li>
-            <li><a class="dropdown-item" href="#">Link 3</a></li>
-        </ul>
     </div>
 </div>
 {% for key, value in projections.items %}
@@ -118,7 +111,7 @@
     <img src="{{ value.Thumbnail }}" alt="">
 
     <div>
-        <h5 class="h-main repertoire-h"><a href="/book/movie/{{ value.projection_movie_id }}/"
+        <h5 class="h-main repertoire-h"><a href="/book/movie/{{ value.projection_movie_id }}/date/{{ pk2 }}"
                                            class="repertoire-days-a">{{ value.title }}</a></h5>
         <div class="repertoire-movie-type-icon">
             {% for i in value.Genre %}

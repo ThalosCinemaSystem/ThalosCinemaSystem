@@ -5,8 +5,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('', views.main_page, name="main_page"),
-    path('book/movie/<str:movie_pk>/', views.book_movie, name='book_movie'),
-    path('book/movie/<str:movie_pk>/projection/<str:projection_pk>/', views.book_movie_projection,
+    path('book/movie/<str:movie_pk>/date/<str:date>', views.book_movie, name='book_movie'),
+    path('book/movie/<str:movie_pk>/date/<str:date>/projection/<str:projection_pk>/', views.book_movie_projection,
          name='book_movie_projection'),
     path('repertuar/<str:pk>/', views.main_page),
     path('repertuar/<str:pk>/<str:pk2>/', views.main_page),
