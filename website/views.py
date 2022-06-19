@@ -59,6 +59,7 @@ def main_page(request, pk=Cinema.objects.first(), pk2=None, pk3=None, pk4=1):
     releases = Projection.objects.filter(start_date_time__gte=datetime.date.today() + datetime.timedelta(days=7)).values('movie_id','movie_id__title','movie_id__thumbnail', 'movie_id__description').distinct()[:3]
     context = {'cinemas': cinemas, 'projections': projections, "Date": Date, "pk": pk, 'pk2': pk2, 'pk3': pk3,
                'pk4': pk4, 'pages': pages, 'releases':releases,'genres':genres}
+
     return render(request, 'website/main.html', context=context)
 
 
@@ -130,8 +131,8 @@ def change_password(request):
         return redirect(main_page)
 
 
-def book_movie(request, movie_pk, room=None, hour=None):
-    projections = Projection.objects.filter(movie_id=movie_pk)
+def book_movie(request, movie_pk, date):
+    projections = Projection.objects.filter(movie_id=movie_pk).filter(start_date_time__contains=date)
 
     context = {'projections': projections}
 
@@ -139,14 +140,17 @@ def book_movie(request, movie_pk, room=None, hour=None):
 
 
 @login_required(login_url='main_page')
-def book_movie_projection(request, movie_pk, projection_pk):
+def book_movie_projection(request, movie_pk, date, projection_pk):
+    reservations = Reservation.objects.filter(projection_id=projection_pk)
+    seats_are_reservated = [reservation.seat for reservation in reservations]
+
     seats = Seat.objects.filter(room__projection=projection_pk)
     divided_seats = [seats[i:i + 10] for i in range(0, 100) if i % 10 == 0]
 
     if request.method == 'POST':
         seat_pk = request.POST.get('seat')
         seat_obj = Seat.objects.get(pk=seat_pk)
-        if not seat_obj.is_reservated:
+        if not seat_obj.is_reservated or (seat_obj.is_reservated and (seat_obj not in seats_are_reservated)):
             seat_obj.is_durning_reservation = True
             seat_obj.save()
             request.session['projection_id_reserving'] = projection_pk
@@ -157,7 +161,7 @@ def book_movie_projection(request, movie_pk, projection_pk):
     if request.session.get('projection_id_reserving', False) and request.session.get('seat_id_reserving', False):
         return redirect('reservation_summary')
 
-    context = {'divided_seats': divided_seats}
+    context = {'divided_seats': divided_seats, 'seats_are_reservated': seats_are_reservated}
     return render(request, 'website/choice_seat.html', context=context)
 
 

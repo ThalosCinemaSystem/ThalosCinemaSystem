@@ -10,8 +10,13 @@
                         <div class="number-seat-row">{{ forloop.counter }}</div>
                         {% for seat in row_seats %}
                             {% if seat.is_reservated %}
-                                <input id="{{seat}}" type="radio" name="seat" value="{{ seat.pk }}" />
-                                <label style="pointer-events: none; color: red;" for="{{seat}}"><span class="material-symbols-outlined">living</span></label>
+                                {% if seat in seats_are_reservated %}
+                                    <input id="{{seat}}" type="radio" name="seat" value="{{ seat.pk }}" />
+                                    <label style="pointer-events: none; color: red;" for="{{seat}}"><span class="material-symbols-outlined">living</span></label>
+                                {% else %}
+                                    <input id="{{seat}}" type="radio" name="seat" value="{{ seat.pk }}" />
+                                    <label for="{{seat}}"><span class="material-symbols-outlined">living</span></label>
+                                {% endif %}
                             {% elif seat.is_durning_reservation %}
                                 <input id="{{seat}}" type="radio" name="seat" value="{{ seat.pk }}" />
                                 <label style="pointer-events: none; color: blue;" for="{{seat}}"><span class="material-symbols-outlined">living</span></label>

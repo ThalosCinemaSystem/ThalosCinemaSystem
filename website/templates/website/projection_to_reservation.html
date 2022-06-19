@@ -11,7 +11,7 @@
                 <p style="margin: 15px 0">{{ projections.0.movie.description }}</p>
                     <div class="repertoire-movie-type-icon hour-icon">
                         {% for projection in projections %}
-                            <a href="projection/{{ projection.id }}">
+                            <a href="{{ projections.0.start_date_time|date:"Y-m-d" }}/projection/{{ projection.id }}">
                                 <button type="button" name="hour" value="{{ projection.id }}" class="navbar-button btn">{{ projection.start_date_time|time:"H:i" }}</button>
                             </a>
                         {% endfor %}
