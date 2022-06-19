@@ -3,18 +3,16 @@
 
 {% block content %}
 <div class="marathons-section">
-    <h5 class="h-main marathons-section-h">{{ marathon.title }}</h5>
-    {% for projection in projections %}
+    {% for movie in movies %}
         <div class="marathons-row">
             <div class="marathon-label">
                 <div class="marathon-cont">
-                    <h5 class="d-md-block h-main h-main-title-marathon" >{{ projection.movie.title }}</h5>
-                    <p class="marathon-price">{{ projection.movie.title }}</p><br>
-                    <p class="marathon-price" style="margin-left: 10px; background: #B6B6B6">{{ projection.start_date_time }}</p>
+                    <h5 class="d-md-block h-main h-main-title-marathon" >{{ movie.title }}</h5>
+                    <p class="marathon-price">{{ movie.title }}</p><br>
                 </div>
                 <div class="maraton-desc">
-                    <img class="marathon-img-mobile" src="{{ projection.movie.thumbnail.url }}" alt="">
-                    <p>{{ projection.movie.description }}</p>
+                    <img class="marathon-img-mobile" src="{{ movie.thumbnail.url }}" alt="">
+                    <p>{{ movie.description }}</p>
                 </div>
 
             </div>
