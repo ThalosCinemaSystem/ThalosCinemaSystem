@@ -139,7 +139,6 @@ def book_movie(request, movie_pk, date):
     return render(request, 'website/projection_to_reservation.html', context=context)
 
 
-@login_required(login_url='main_page')
 def book_movie_projection(request, movie_pk, date, projection_pk):
     reservations = Reservation.objects.filter(projection_id=projection_pk)
     seats_are_reservated = [reservation.seat for reservation in reservations]
