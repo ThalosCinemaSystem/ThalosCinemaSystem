@@ -13,7 +13,6 @@ urlpatterns = [
     path('repertuar/<str:pk>/<str:pk2>/<str:pk3>/', views.main_page),
     path('repertuar/<str:pk>/<str:pk2>/<str:pk3>/<int:pk4>/', views.main_page),
     path('logout', views.logout_user, name="logout"),
-    path('marathons', views.marathons, name="marathons"),
     path('schools', views.schools, name="schools"),
     path('account', views.account, name="account"),
     path('events_and_promotions', views.events_and_promotions, name="events_and_promotions"),

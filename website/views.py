@@ -63,16 +63,6 @@ def main_page(request, pk=Cinema.objects.first(), pk2=None, pk3=None, pk4=1):
     return render(request, 'website/main.html', context=context)
 
 
-def marathons(request):
-    marathon = Marathon.objects.first()
-    projections = Projection.objects.filter(marathon=marathon).all()
-
-    context = {'marathon': marathon,
-               'projections': projections}
-
-    return render(request, 'website/marathons.html', context=context)
-
-
 def schools(request):
     context = {}
 
