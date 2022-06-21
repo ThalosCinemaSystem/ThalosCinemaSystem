@@ -18,10 +18,11 @@ class Calendar(HTMLCalendar):
 
     def formatday(self, day):
         if day != 0:
+            month = datetime.datetime.strptime(str(self.month), "%m").strftime("%m")
             if day == int(self.data.split("-")[2]) and self.month == int(self.data.split("-")[1]):
-                return f"<li><a href ='/repertuar/{self.cinema}/{self.year}-{self.month}-{day}/'><span class='active'>{day}</span></a></li>"
+                return f"<li><a href ='/repertuar/{self.cinema}/{self.year}-{month}-{day}/'><span class='active'>{day}</span></a></li>"
             else:
-                return f"<li><a href ='/repertuar/{self.cinema}/{self.year}-{self.month}-{day}/'>{day}</a></li>"
+                return f"<li><a href ='/repertuar/{self.cinema}/{self.year}-{month}-{day}/'>{day}</a></li>"
         return '<li></li>'
 
     def formatweek(self, theweek):
@@ -84,7 +85,6 @@ def main_page(request, pk=None, pk2=None, pk3=None, pk4=1):
             projections[i.movie.title]['start_date_time'] = []
             projections[i.movie.title]['Genre'] = Genre.objects.filter(movie__title=i.movie.title)
             projections[i.movie.title]['projection_movie_id'] = i.movie.id
-            projections[i.movie.title]['cinema_id'] = i.room.cinema.id
             id = id + 1
 
         projections[i.movie.title]['start_date_time'].append(i.start_date_time)
@@ -175,8 +175,8 @@ def change_password(request):
         return redirect(main_page)
 
 
-def book_movie(request, cinema_pk, movie_pk, date):
-    projections = Projection.objects.filter(movie_id=movie_pk).filter(start_date_time__contains=date).filter(room__cinema_id=cinema_pk)
+def book_movie(request, movie_pk, date):
+    projections = Projection.objects.filter(movie_id=movie_pk).filter(start_date_time__contains=date)
 
     context = {'projections': projections}
 
@@ -184,7 +184,7 @@ def book_movie(request, cinema_pk, movie_pk, date):
 
 
 @login_required(login_url='main_page')
-def book_movie_projection(request, cinema_pk, movie_pk, date, projection_pk):
+def book_movie_projection(request, movie_pk, date, projection_pk):
     reservations = Reservation.objects.filter(projection_id=projection_pk)
     seats_are_reservated = [reservation.seat for reservation in reservations]
 
@@ -243,3 +243,4 @@ def reservation_summary(request):
         return render(request, 'website/summary_reservation.html', context=context)
 
     return redirect(main_page)
+

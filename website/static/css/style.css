@@ -57,7 +57,7 @@ a:hover{
 /*navbar*/
 .navbar-main
 {
-	width: 100vw;
+	width: 100%;
     background: #242424;
 	z-index: 2;
 	position: absolute;
@@ -832,7 +832,7 @@ footer p
 .month {
   padding: 70px 25px;
   width: 100%;
-  background: #1abc9c;
+  background: #F4BCBC;
   text-align: center;
 }
 
@@ -881,18 +881,28 @@ footer p
 /* Highlight the "current" day */
 .days li .active {
   padding: 5px;
-  background: #1abc9c;
+  background: #555555;
   color: white !important
 }
 .month .prev {
   float: left;
   padding-top: 10px;
+	cursor: pointer;
 }
 
 /* Next button */
 .month .next {
   float: right;
   padding-top: 10px;
+	cursor: pointer;
 }
+.overflow {
+	width: 106px;
 
+  /**
+   * Required properties to achieve text-overflow
+   */
+    white-space: nowrap;
+    overflow: hidden;
+}
 
