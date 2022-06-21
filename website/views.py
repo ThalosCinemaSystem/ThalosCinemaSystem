@@ -18,10 +18,11 @@ class Calendar(HTMLCalendar):
 
     def formatday(self, day):
         if day != 0:
+            month = datetime.datetime.strptime(str(self.month), "%m").strftime("%m")
             if day == int(self.data.split("-")[2]) and self.month == int(self.data.split("-")[1]):
-                return f"<li><a href ='/repertuar/{self.cinema}/{self.year}-{self.month}-{day}/'><span class='active'>{day}</span></a></li>"
+                return f"<li><a href ='/repertuar/{self.cinema}/{self.year}-{month}-{day}/'><span class='active'>{day}</span></a></li>"
             else:
-                return f"<li><a href ='/repertuar/{self.cinema}/{self.year}-{self.month}-{day}/'>{day}</a></li>"
+                return f"<li><a href ='/repertuar/{self.cinema}/{self.year}-{month}-{day}/'>{day}</a></li>"
         return '<li></li>'
 
     def formatweek(self, theweek):
