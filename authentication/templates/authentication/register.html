@@ -7,6 +7,7 @@
 
         <form method="post" action="">
             <h1 class="display-1 h-main">Zarejestruj się</h1>
+            {{ msg|safe }}
             {% csrf_token %}
             <div class="mb-3">
                 <label for="username" class="form-label">Nazwa użytkownika</label>
