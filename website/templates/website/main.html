@@ -141,7 +141,7 @@
             <button type="button" class="btn1 btn navbar-button dropdown-toggle" data-bs-toggle="dropdown">Gatunek
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/repertuar/{{ pk }}/{{ pk2 }}/">ALL</a></li>
+                <li><a class="dropdown-item" href="/repertuar/{{ pk }}/{{ pk2 }}/">Wszystkie</a></li>
                 {% for genre in genres %}
                     <li><a class="dropdown-item"
                            href="/repertuar/{{ pk }}/{{ pk2 }}/{{ genre.name }}">{{ genre.name }}</a></li>
@@ -151,7 +151,7 @@
     </div>
 {% for key, value in projections.items %}
 <div class="repertoire-movie">
-    <img src="{{ value.Thumbnail }}" alt="">
+    <a href="/book/movie/{{ value.projection_movie_id }}/date/{{ pk2 }}" class="repertoire-days-a"><img src="{{ value.Thumbnail }}" alt=""></a>
 
     <div>
         <h5 class="h-main repertoire-h"><a href="/book/movie/{{ value.projection_movie_id }}/date/{{ pk2 }}"
@@ -197,7 +197,7 @@
             </div>
             <div class="premieres-image-label">
                 <h5>{{release.movie_id__title}}</h5>
-                <p>{{release.movie_id__description}}</p>
+                <p class="overflow-p">{{release.movie_id__description}}</p>
             </div>
         </div>
         {% endfor %}
@@ -206,7 +206,7 @@
 </div>
 <!--Promocje i wydarzenia-->
 <div class="event-section">
-    <a class="h-main" href="{% url 'events_and_promotions' %}">Promocje i wydarzenia</a>
+    <h1 class="h-main" href="{% url 'events_and_promotions' %}">Promocje i wydarzenia</h1>
     <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
         <!-- Indicators/dots -->

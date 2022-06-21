@@ -2,13 +2,25 @@
 {% load static %}
 {% block content %}
     <div class="content-container projection-container">
-        <h1>Rezerwacja</h1>
-        <h1>{{ projection.movie.title }}</h1>
-        <h1>{{ projection.start_date_time|date:"d.m.y" }}</h1>
-        <h1>{{ projection.start_date_time|time:"H:i" }}</h1>
-        <h1>{{ projection.type_projection }}</h1>
-        <h1>{{ projection.room.number }}</h1>
-        <h1>{{ seat.seat_number }}</h1>
+        <h1 class="h-main" style="font-size: 34px; text-align: center;">twoja Rezerwacja</h1>
+
+        <div class="repertoire-movie" style="border:none; margin:0;">
+        <div>
+            <h5 class="h-main repertoire-h"><p class="h-main" style="margin-top:0;">{{ projection.movie.title }}</p></h5>
+            <div class="repertoire-movie-type-icon">
+                <button type="submit" class="navbar-button btn hour-info">{{ projection.start_date_time|date:"d.m.y" }}</button>
+            </div>
+            <div class="repertoire-movie-type-icon">
+                <button type="submit" class="navbar-button btn hour-info">{{ projection.start_date_time|time:"H:i" }}</button>
+            </div>
+            <div class="repertoire-movie-type-icon hour-icon">
+                <button type="submit" class="navbar-button btn">SALA: {{ projection.room.number }}</button>
+            </div>
+            <div class="repertoire-movie-type-icon hour-icon">
+                <button type="submit" class="navbar-button btn">MIEJSCE: {{ seat.seat_number }}</button>
+            </div>
+        </div>
+</div>
 
     <div class="submit-container">
                 <a href="?reservation=done">
