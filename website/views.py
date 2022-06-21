@@ -243,3 +243,4 @@ def reservation_summary(request):
         return render(request, 'website/summary_reservation.html', context=context)
 
     return redirect(main_page)
+
