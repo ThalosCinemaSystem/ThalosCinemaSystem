@@ -243,7 +243,3 @@ def reservation_summary(request):
         return render(request, 'website/summary_reservation.html', context=context)
 
     return redirect(main_page)
-
-
-def your_reservations(request):
-    return render(request, 'website/your_reservations.html', {})
