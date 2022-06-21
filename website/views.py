@@ -5,12 +5,60 @@ from django.contrib.auth.forms import PasswordChangeForm
 from .models import *
 import datetime
 from django.contrib.auth.decorators import login_required
+from calendar import HTMLCalendar
 
 
-def main_page(request, pk=Cinema.objects.first(), pk2=None, pk3=None, pk4=1):
+class Calendar(HTMLCalendar):
+    def __init__(self, year=None, month=None, cinema=None, data=None):
+        self.year = year
+        self.month = month
+        self.cinema = cinema
+        self.data = data
+        super(Calendar, self).__init__()
+
+    def formatday(self, day):
+        if day != 0:
+            if day == int(self.data.split("-")[2]) and self.month == int(self.data.split("-")[1]):
+                return f"<li><a href ='/repertuar/{self.cinema}/{self.year}-{self.month}-{day}/'><span class='active'>{day}</span></a></li>"
+            else:
+                return f"<li><a href ='/repertuar/{self.cinema}/{self.year}-{self.month}-{day}/'>{day}</a></li>"
+        return '<li></li>'
+
+    def formatweek(self, theweek):
+        week = ''
+        for d, weekday in theweek:
+            week += self.formatday(d)
+        return week
+
+    def formatmonth(self, withyear=True):
+        cal = f'<ul class="days">\n'
+        for week in self.monthdays2calendar(self.year, self.month):
+            cal += f'{self.formatweek(week)}\n'
+        return cal
+
+
+def main_page(request, pk=None, pk2=None, pk3=None, pk4=1):
+    if pk is None:
+        pk = Cinema.objects.first()
     if pk2 is None:
         pk2 = datetime.date.today().strftime('%Y-%m-%d')
 
+    yy = int(datetime.date.today().strftime('%Y'))
+    mm = int(datetime.date.today().strftime('%m'))
+    m = [datetime.datetime.strptime(str(mm), "%m").strftime("%B")]
+    y = [yy]
+    P_Calendar = [Calendar(yy, mm, pk, pk2)]
+    P_Calendar[0] = P_Calendar[0].formatmonth(withyear=True)
+    if mm == 12:
+        P_Calendar.append(Calendar(yy + 1, 1, pk, pk2))
+        m.append(datetime.datetime.strptime(str(1), "%m").strftime("%B"))
+        y.append(yy + 1)
+    else:
+        P_Calendar.append(Calendar(yy, mm + 1, pk, pk2))
+        m.append(datetime.datetime.strptime(str(mm + 1), "%m").strftime("%B"))
+        y.append(yy)
+
+    P_Calendar[1] = P_Calendar[1].formatmonth(withyear=True)
     projection = Projection.objects.filter(room__cinema__name=pk)
     projection = projection.filter(start_date_time__contains=pk2)
     if pk3 is not None and pk3 != 'None':
@@ -56,9 +104,14 @@ def main_page(request, pk=Cinema.objects.first(), pk2=None, pk3=None, pk4=1):
             del projections[x]
     cinemas = Cinema.objects.all()
     genres = Genre.objects.all()
-    releases = Projection.objects.filter(start_date_time__gte=datetime.date.today() + datetime.timedelta(days=7)).values('movie_id','movie_id__title','movie_id__thumbnail', 'movie_id__description').distinct()[:3]
+    releases = Projection.objects.filter(
+        start_date_time__gte=datetime.date.today() + datetime.timedelta(days=7)).values('movie_id', 'movie_id__title',
+                                                                                        'movie_id__thumbnail',
+                                                                                        'movie_id__description').distinct()[
+               :3]
     context = {'cinemas': cinemas, 'projections': projections, "Date": Date, "pk": pk, 'pk2': pk2, 'pk3': pk3,
-               'pk4': pk4, 'pages': pages, 'releases':releases,'genres':genres}
+               'pk4': pk4, 'pages': pages, 'releases': releases, 'genres': genres, 'P_Calendar': P_Calendar,
+               'weekend': weekend, 'y': y, 'm': m}
 
     return render(request, 'website/main.html', context=context)
 

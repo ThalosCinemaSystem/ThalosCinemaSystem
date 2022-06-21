@@ -69,34 +69,86 @@
 </div>
 <!--repertoire-->
 <div class="repertoire">
-    <div>
-        <h5 class="h-main">Repertuar</h5>
-        <button type="button" class="wybierz-kino-button btn navbar-button dropdown-toggle"
-                data-bs-toggle="dropdown">{{ pk }}
-        </button>
-        <ul class="dropdown-menu">
-            {% for cinema in cinemas %}
-            <li><a class="dropdown-item" href="/repertuar/{{ cinema.name }}">{{ cinema.name }}</a></li>
-            {% endfor %}
-        </ul>
-        <div class="repertoire-days">
-            {% for key, value in Date.items %}
-            <p><a href="/repertuar/{{ pk }}/{{ value.Day }}/" class="repertoire-days-a">{{ value.Name }}</a></p>
-            {% endfor %}
-            <p><span class="material-symbols-outlined">calendar_month</span></p>
+        <div>
+            <h5 class="h-main">Repertuar</h5>
+            <button type="button" class="wybierz-kino-button btn navbar-button dropdown-toggle"
+                    data-bs-toggle="dropdown">{{ pk }}
+            </button>
+            <ul class="dropdown-menu">
+                {% for cinema in cinemas %}
+                    <li><a class="dropdown-item" href="/repertuar/{{ cinema.name }}">{{ cinema.name }}</a></li>
+                {% endfor %}
+            </ul>
+            <div class="repertoire-days">
+                {% for key, value in Date.items %}
+                    <p><a href="/repertuar/{{ pk }}/{{ value.Day }}/" class="repertoire-days-a">{{ value.Name }}</a></p>
+                {% endfor %}
+
+                <p data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><span
+                        class="material-symbols-outlined">calendar_month</span></p>
+                <ul class="dropdown-menu p-0" style="width: 350px;max-width: 100%;">
+
+                    <div id="carouselExampleControls2" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="month">
+                                    <ul>
+                                        <li data-target="#carouselExampleControls2" data-slide-to="0" class="prev">
+                                            &#10094;
+                                        </li>
+                                        <li data-target="#carouselExampleControls2" data-slide-to="1" class="next">
+                                            &#10095;
+                                        </li>
+                                        <li>{{ m.0 }}<br><span style="font-size:18px">{{ y.0 }}</span></li>
+                                    </ul>
+                                </div>
+                                <ul class="weekdays">
+                                    {% for i in weekend %}
+                                        <li>{{ i }}</li>
+                                    {% endfor %}
+                                </ul>
+                                <li>
+                                    {{ P_Calendar.0|safe }}
+                                </li>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="month">
+                                    <ul>
+                                        <li data-target="#carouselExampleControls2" data-slide-to="0" class="prev">
+                                            &#10094;
+                                        </li>
+                                        <li data-target="#carouselExampleControls2" data-slide-to="1" class="next">
+                                            &#10095;
+                                        </li>
+                                        <li>{{ m.1 }}<br><span style="font-size:18px">{{ y.1 }}</span></li>
+                                    </ul>
+                                </div>
+                                <ul class="weekdays">
+                                    {% for i in weekend %}
+                                        <li>{{ i }}</li>
+                                    {% endfor %}
+                                </ul>
+                                <li>
+                                    {{ P_Calendar.1|safe }}
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div class="buttons">
+            <button type="button" class="btn1 btn navbar-button dropdown-toggle" data-bs-toggle="dropdown">Gatunek
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/repertuar/{{ pk }}/{{ pk2 }}/">ALL</a></li>
+                {% for genre in genres %}
+                    <li><a class="dropdown-item"
+                           href="/repertuar/{{ pk }}/{{ pk2 }}/{{ genre.name }}">{{ genre.name }}</a></li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
-    <div class="buttons">
-        <button type="button" class="btn1 btn navbar-button dropdown-toggle" data-bs-toggle="dropdown">Gatunek
-        </button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/repertuar/{{ pk }}/{{ pk2 }}/">ALL</a></li>
-            {% for genre in genres %}
-            <li><a class="dropdown-item" href="/repertuar/{{ pk }}/{{ pk2 }}/{{genre.name}}">{{genre.name}}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
-</div>
 {% for key, value in projections.items %}
 <div class="repertoire-movie">
     <img src="{{ value.Thumbnail }}" alt="">
