@@ -3,19 +3,20 @@
 
 
 {% block content %}
-    <div class="container">
-        <h1 class="display-1">Login</h1>
-        <form action="" method="post">
+    <div class="container register-section">
+        <form method="post" action="">
+            <h1 class="display-1 h-main">Login</h1>
+            {{ msg|safe }}
             {% csrf_token %}
-          <div class="mb-3">
-            <label for="email" class="form-label">Adres email</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Hasło</label>
-            <input type="password" class="form-control" id="password" name="password">
-          </div>
-          <button type="submit" class="btn btn-primary">Zaloguj</button>
+            <div class="mb-3">
+                <label for="email" class="form-label">Adres email</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Hasło</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Zaloguj</button>
         </form>
     </div>
 {% endblock %}
