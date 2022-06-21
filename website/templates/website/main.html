@@ -151,7 +151,7 @@
     </div>
 {% for key, value in projections.items %}
 <div class="repertoire-movie">
-    <img src="{{ value.Thumbnail }}" alt="">
+    <a href="/book/movie/{{ value.projection_movie_id }}/date/{{ pk2 }}"class="repertoire-days-a">{{ value.title }}<img src="{{ value.Thumbnail }}" alt=""></a>
 
     <div>
         <h5 class="h-main repertoire-h"><a href="/book/movie/{{ value.projection_movie_id }}/date/{{ pk2 }}"
@@ -206,7 +206,7 @@
 </div>
 <!--Promocje i wydarzenia-->
 <div class="event-section">
-    <a class="h-main" href="{% url 'events_and_promotions' %}">Promocje i wydarzenia</a>
+    <h1 class="h-main" href="{% url 'events_and_promotions' %}">Promocje i wydarzenia</h1>
     <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
         <!-- Indicators/dots -->
