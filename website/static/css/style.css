@@ -57,7 +57,7 @@ a:hover{
 /*navbar*/
 .navbar-main
 {
-	width: 100vw;
+	width: 100%;
     background: #242424;
 	z-index: 2;
 	position: absolute;
