@@ -832,7 +832,7 @@ footer p
 .month {
   padding: 70px 25px;
   width: 100%;
-  background: #F4BCBC;
+  background: #1abc9c;
   text-align: center;
 }
 
@@ -881,7 +881,7 @@ footer p
 /* Highlight the "current" day */
 .days li .active {
   padding: 5px;
-  background: #555555;
+  background: #1abc9c;
   color: white !important
 }
 .month .prev {
@@ -896,13 +896,13 @@ footer p
   padding-top: 10px;
 	cursor: pointer;
 }
-.overflow {
-	width: 106px;
-
-  /**
-   * Required properties to achieve text-overflow
-   */
-    white-space: nowrap;
+.overflow-p
+{
+	display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
     overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 68px;
 }
 
