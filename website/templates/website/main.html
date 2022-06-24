@@ -151,7 +151,7 @@
     </div>
 {% for key, value in projections.items %}
 <div class="repertoire-movie">
-    <a href="/book/movie/{{ value.projection_movie_id }}/date/{{ pk2 }}" class="repertoire-days-a"><img src="{{ value.Thumbnail }}" alt=""></a>
+    <a href="/book/cinema/{{ value.cinema_pk }}/movie/{{ value.projection_movie_id }}/date/{{ pk2 }}" class="repertoire-days-a"><img src="{{ value.Thumbnail }}" alt=""></a>
 
     <div>
         <h5 class="h-main repertoire-h"><a href="/book/cinema/{{ value.cinema_pk }}/movie/{{ value.projection_movie_id }}/date/{{ pk2 }}"
