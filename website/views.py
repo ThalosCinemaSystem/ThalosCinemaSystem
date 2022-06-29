@@ -5,12 +5,61 @@ from django.contrib.auth.forms import PasswordChangeForm
 from .models import *
 import datetime
 from django.contrib.auth.decorators import login_required
+from calendar import HTMLCalendar
 
 
-def main_page(request, pk=Cinema.objects.first(), pk2=None, pk3=None, pk4=1):
+class Calendar(HTMLCalendar):
+    def __init__(self, year=None, month=None, cinema=None, data=None):
+        self.year = year
+        self.month = month
+        self.cinema = cinema
+        self.data = data
+        super(Calendar, self).__init__()
+
+    def formatday(self, day):
+        if day != 0:
+            month = datetime.datetime.strptime(str(self.month), "%m").strftime("%m")
+            if day == int(self.data.split("-")[2]) and self.month == int(self.data.split("-")[1]):
+                return f"<li><a href ='/repertuar/{self.cinema}/{self.year}-{month}-{day}/'><span class='active'>{day}</span></a></li>"
+            else:
+                return f"<li><a href ='/repertuar/{self.cinema}/{self.year}-{month}-{day}/'>{day}</a></li>"
+        return '<li></li>'
+
+    def formatweek(self, theweek):
+        week = ''
+        for d, weekday in theweek:
+            week += self.formatday(d)
+        return week
+
+    def formatmonth(self, withyear=True):
+        cal = f'<ul class="days">\n'
+        for week in self.monthdays2calendar(self.year, self.month):
+            cal += f'{self.formatweek(week)}\n'
+        return cal
+
+
+def main_page(request, pk=None, pk2=None, pk3=None, pk4=1):
+    if pk is None:
+        pk = Cinema.objects.first()
     if pk2 is None:
         pk2 = datetime.date.today().strftime('%Y-%m-%d')
 
+    yy = int(datetime.date.today().strftime('%Y'))
+    mm = int(datetime.date.today().strftime('%m'))
+    m = [datetime.datetime.strptime(str(mm), "%m").strftime("%B")]
+    y = [yy]
+    P_Calendar = [Calendar(yy, mm, pk, pk2)]
+    P_Calendar[0] = P_Calendar[0].formatmonth(withyear=True)
+    if mm == 12:
+        P_Calendar.append(Calendar(yy + 1, 1, pk, pk2))
+        m.append(datetime.datetime.strptime(str(1), "%m").strftime("%B"))
+        y.append(yy + 1)
+    else:
+        P_Calendar.append(Calendar(yy, mm + 1, pk, pk2))
+        m.append(datetime.datetime.strptime(str(mm + 1), "%m").strftime("%B"))
+        y.append(yy)
+
+    P_Calendar[1] = P_Calendar[1].formatmonth(withyear=True)
     projection = Projection.objects.filter(room__cinema__name=pk)
     projection = projection.filter(start_date_time__contains=pk2)
     if pk3 is not None and pk3 != 'None':
@@ -36,6 +85,7 @@ def main_page(request, pk=Cinema.objects.first(), pk2=None, pk3=None, pk4=1):
             projections[i.movie.title]['start_date_time'] = []
             projections[i.movie.title]['Genre'] = Genre.objects.filter(movie__title=i.movie.title)
             projections[i.movie.title]['projection_movie_id'] = i.movie.id
+            projections[i.movie.title]['cinema_pk'] = i.room.cinema.id
             id = id + 1
 
         projections[i.movie.title]['start_date_time'].append(i.start_date_time)
@@ -56,20 +106,16 @@ def main_page(request, pk=Cinema.objects.first(), pk2=None, pk3=None, pk4=1):
             del projections[x]
     cinemas = Cinema.objects.all()
     genres = Genre.objects.all()
-    releases = Projection.objects.filter(start_date_time__gte=datetime.date.today() + datetime.timedelta(days=7)).values('movie_id','movie_id__title','movie_id__thumbnail', 'movie_id__description').distinct()[:3]
+    releases = Projection.objects.filter(
+        start_date_time__gte=datetime.date.today() + datetime.timedelta(days=7)).values('movie_id', 'movie_id__title',
+                                                                                        'movie_id__thumbnail',
+                                                                                        'movie_id__description').distinct()[
+               :3]
     context = {'cinemas': cinemas, 'projections': projections, "Date": Date, "pk": pk, 'pk2': pk2, 'pk3': pk3,
-               'pk4': pk4, 'pages': pages, 'releases':releases,'genres':genres}
+               'pk4': pk4, 'pages': pages, 'releases': releases, 'genres': genres, 'P_Calendar': P_Calendar,
+               'weekend': weekend, 'y': y, 'm': m}
+
     return render(request, 'website/main.html', context=context)
-
-
-def marathons(request):
-    marathon = Marathon.objects.first()
-    projections = Projection.objects.filter(marathon=marathon).all()
-
-    context = {'marathon': marathon,
-               'projections': projections}
-
-    return render(request, 'website/marathons.html', context=context)
 
 
 def schools(request):
@@ -130,8 +176,8 @@ def change_password(request):
         return redirect(main_page)
 
 
-def book_movie(request, movie_pk, room=None, hour=None):
-    projections = Projection.objects.filter(movie_id=movie_pk)
+def book_movie(request, cinema_pk, movie_pk, date):
+    projections = Projection.objects.filter(movie_id=movie_pk).filter(start_date_time__contains=date).filter(room__cinema_id=cinema_pk)
 
     context = {'projections': projections}
 
@@ -139,14 +185,18 @@ def book_movie(request, movie_pk, room=None, hour=None):
 
 
 @login_required(login_url='main_page')
-def book_movie_projection(request, movie_pk, projection_pk):
+def book_movie_projection(request, cinema_pk, movie_pk, date, projection_pk):
+    reservations = Reservation.objects.filter(projection_id=projection_pk)
+    seats_are_reservated = [reservation.seat for reservation in reservations]
+
     seats = Seat.objects.filter(room__projection=projection_pk)
-    divided_seats = [seats[i:i + 10] for i in range(0, 100) if i % 10 == 0]
+    seats_sorted = sorted(seats, key=lambda seat: seat.seat_number)
+    divided_seats = [seats_sorted[i:i + 10] for i in range(0, 100) if i % 10 == 0]
 
     if request.method == 'POST':
         seat_pk = request.POST.get('seat')
         seat_obj = Seat.objects.get(pk=seat_pk)
-        if not seat_obj.is_reservated:
+        if not seat_obj.is_reservated or (seat_obj.is_reservated and (seat_obj not in seats_are_reservated)):
             seat_obj.is_durning_reservation = True
             seat_obj.save()
             request.session['projection_id_reserving'] = projection_pk
@@ -157,7 +207,7 @@ def book_movie_projection(request, movie_pk, projection_pk):
     if request.session.get('projection_id_reserving', False) and request.session.get('seat_id_reserving', False):
         return redirect('reservation_summary')
 
-    context = {'divided_seats': divided_seats}
+    context = {'divided_seats': divided_seats, 'seats_are_reservated': seats_are_reservated}
     return render(request, 'website/choice_seat.html', context=context)
 
 
@@ -194,3 +244,4 @@ def reservation_summary(request):
         return render(request, 'website/summary_reservation.html', context=context)
 
     return redirect(main_page)
+

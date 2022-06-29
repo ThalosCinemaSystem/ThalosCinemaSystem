@@ -16,50 +16,41 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="slide"
-                     style="background: url('https://www.firefly.rs/wp-content/uploads/2021/03/01_ff-webhero_v05.jpg')"></div>
+                     style="background: url('https://thalospublic.blob.core.windows.net/media/movies_images/tajemnicadumbledora-plakat.jpeg')"></div>
                 <div class="carousel-caption">
-                    <h5>Lorem Ipsum</h5>
-                    <p>Lorem ipsum dolor siquet tortor, eget convallis lectus ornare in. Phasellus at quaamet leo
-                        sed risus faucibus commodo. Phasellus tDonec efficitur purus eu felis finibus fan purus
-                        mollis, semper erat vel, condimentum massa Donec efficitur purus eu felis finibus fan purus
-                        mollis, semper erat vel, condimentum massaincidunt neque</p>
+                    <h5>Fantastyczne zwierzęta: Tajemnice Dumbledore'a</h5>
+                    <p>Grindelwald wraz ze swoją armią dąży do przejęcia władzy na świecie. Dumbledore i Newt z pomocą przyjaciół chcą temu zapobiec.</p>
                     <span class="d-none d-md-block">
-          <button class="navbar-button btn movie-desc-icon" type="button">Dramat</button>
-          <button class="navbar-button btn movie-desc-icon" type="button">Horror</button>
-          <button class="navbar-button btn movie-desc-icon" type="button">160min</button>
+          <button class="navbar-button btn movie-desc-icon" type="button">Familijny</button>
+          <button class="navbar-button btn movie-desc-icon" type="button">Fantasy</button>
+          <button class="navbar-button btn movie-desc-icon" type="button">Przygodowy</button>
+          <button class="navbar-button btn movie-desc-icon" type="button">142min</button>
         </span>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="slide"
-                     style="background: url('https://www.firefly.rs/wp-content/uploads/2020/11/01_ff-webhero_v01-1.jpg')"></div>
+                     style="background: url('https://thalospublic.blob.core.windows.net/media/movies_images/gambit_krolowej_plakat.jpg')"></div>
                 <div class="carousel-caption">
-                    <h5>Donec efficitur</h5>
-                    <p>Donec efficitur purus eu felis finibus fan purus mollis, semper erat vel, condimentum massa
-                        Donec efficitur purus eu felis finibus fan purus mollis, semper erat vel, condimentum massa
-                        Donec efficitur purus eu felis finibus fan purus mollis, semper erat vel, condimentum massa.
-                        Aliquam erat volutpat. Donec efficitur est in enim hendrerit, quis tincidunt arcu
-                        venenatis.</p>
+                    <h5>GAMBIT KRÓLOWEJ</h5>
+                    <p>Historia genialnej szachistki wzbudziła ogromne emocje w świecie fanów seriali. To opowieść o osieroconej dziewczynce, Beth Harmon, która odkrywa w sobie pasję do gry w szachy. Oprócz pasji dziewczyna ma olbrzymi talent, który szybko zaprowadza ją na szczyt i pierwsze miejsca na szachowych zawodach, ale posiada też skłonność do nałogów, co z kolei kładzie się cieniem na jej życiu.</p>
                     <span class="d-none d-md-block">
           <button class="navbar-button btn movie-desc-icon" type="button">Dramat</button>
-          <button class="navbar-button btn movie-desc-icon" type="button">Horror</button>
-          <button class="navbar-button btn movie-desc-icon" type="button">160min</button>
-        </span>
+        <button class="navbar-button btn movie-desc-icon" type="button">Mini serial</button>
+                    </span>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="slide"
-                     style="background: url('https://www.firefly.rs/wp-content/uploads/2020/11/01_Block-27-webhero.jpg')"></div>
+                     style="background: url('https://thalospublic.blob.core.windows.net/media/movies_images/flash.jpg')"></div>
                 <div class="carousel-caption">
-                    <h5>Vivamus semper</h5>
-                    <p>Vivamus semper ut urna aDonec efficitur purus eu felis finibus fan purus mollis, semper erat
-                        vel, condimentum massaDonec efficitur purus eu felis finibus fan purus mollis, semper erat
-                        vel, condimentum massa t hendrerit. sce non malesuad tristique tortor nibh, sit amet commodo
-                        nunc commodo quis. Sed sagittis convallis scelerisque.</p>
+                    <h5>Flash</h5>
+                    <p>Młody naukowiec w wyniku eksplozji laboratorium i porażenia piorunem zostaje obdarzony niesamowitą szybkością, którą wykorzystuje do walki ze złem.</p>
                     <span class="d-none d-md-block">
           <button class="navbar-button btn movie-desc-icon" type="button">Dramat</button>
-          <button class="navbar-button btn movie-desc-icon" type="button">Horror</button>
-          <button class="navbar-button btn movie-desc-icon" type="button">160min</button>
+          <button class="navbar-button btn movie-desc-icon" type="button">Akcja</button>
+                        <button class="navbar-button btn movie-desc-icon" type="button">Sci-Fi</button>
+          <button class="navbar-button btn movie-desc-icon" type="button">8 sezonów</button>
         </span>
                 </div>
             </div>
@@ -78,47 +69,92 @@
 </div>
 <!--repertoire-->
 <div class="repertoire">
-    <div>
-        <h5 class="h-main">Repertuar</h5>
-        <button type="button" class="wybierz-kino-button btn navbar-button dropdown-toggle"
-                data-bs-toggle="dropdown">{{ pk }}
-        </button>
-        <ul class="dropdown-menu">
-            {% for cinema in cinemas %}
-            <li><a class="dropdown-item" href="/repertuar/{{ cinema.name }}">{{ cinema.name }}</a></li>
-            {% endfor %}
-        </ul>
-        <div class="repertoire-days">
-            {% for key, value in Date.items %}
-            <p><a href="/repertuar/{{ pk }}/{{ value.Day }}/" class="repertoire-days-a">{{ value.Name }}</a></p>
-            {% endfor %}
-            <p><span class="material-symbols-outlined">calendar_month</span></p>
+        <div>
+            <h5 class="h-main">Repertuar</h5>
+            <button type="button" class="wybierz-kino-button btn navbar-button dropdown-toggle"
+                    data-bs-toggle="dropdown">{{ pk }}
+            </button>
+            <ul class="dropdown-menu">
+                {% for cinema in cinemas %}
+                    <li><a class="dropdown-item" href="/repertuar/{{ cinema.name }}">{{ cinema.name }}</a></li>
+                {% endfor %}
+            </ul>
+            <div class="repertoire-days">
+                {% for key, value in Date.items %}
+                    <p><a href="/repertuar/{{ pk }}/{{ value.Day }}/" class="repertoire-days-a">{{ value.Name }}</a></p>
+                {% endfor %}
+
+                <p data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><span
+                        class="material-symbols-outlined">calendar_month</span></p>
+                <ul class="dropdown-menu p-0" style="width: 350px;max-width: 100%;">
+
+                    <div id="carouselExampleControls2" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="month">
+                                    <ul>
+                                        <li data-target="#carouselExampleControls2" data-slide-to="0" class="prev">
+                                            &#10094;
+                                        </li>
+                                        <li data-target="#carouselExampleControls2" data-slide-to="1" class="next">
+                                            &#10095;
+                                        </li>
+                                        <li>{{ m.0 }}<br><span style="font-size:18px">{{ y.0 }}</span></li>
+                                    </ul>
+                                </div>
+                                <ul class="weekdays">
+                                    {% for i in weekend %}
+                                        <li>{{ i }}</li>
+                                    {% endfor %}
+                                </ul>
+                                <li>
+                                    {{ P_Calendar.0|safe }}
+                                </li>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="month">
+                                    <ul>
+                                        <li data-target="#carouselExampleControls2" data-slide-to="0" class="prev">
+                                            &#10094;
+                                        </li>
+                                        <li data-target="#carouselExampleControls2" data-slide-to="1" class="next">
+                                            &#10095;
+                                        </li>
+                                        <li>{{ m.1 }}<br><span style="font-size:18px">{{ y.1 }}</span></li>
+                                    </ul>
+                                </div>
+                                <ul class="weekdays">
+                                    {% for i in weekend %}
+                                        <li>{{ i }}</li>
+                                    {% endfor %}
+                                </ul>
+                                <li>
+                                    {{ P_Calendar.1|safe }}
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div class="buttons">
+            <button type="button" class="btn1 btn navbar-button dropdown-toggle" data-bs-toggle="dropdown">Gatunek
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/repertuar/{{ pk }}/{{ pk2 }}/">Wszystkie</a></li>
+                {% for genre in genres %}
+                    <li><a class="dropdown-item"
+                           href="/repertuar/{{ pk }}/{{ pk2 }}/{{ genre.name }}">{{ genre.name }}</a></li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
-    <div class="buttons">
-        <button type="button" class="btn1 btn navbar-button dropdown-toggle" data-bs-toggle="dropdown">Gatunek
-        </button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/repertuar/{{ pk }}/{{ pk2 }}/">ALL</a></li>
-            {% for genre in genres %}
-            <li><a class="dropdown-item" href="/repertuar/{{ pk }}/{{ pk2 }}/{{genre.name}}">{{genre.name}}</a></li>
-            {% endfor %}
-        </ul>
-        <button type="button" class="btn navbar-button dropdown-toggle" data-bs-toggle="dropdown">Najwyższa ocena
-        </button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Link 1</a></li>
-            <li><a class="dropdown-item" href="#">Link 2</a></li>
-            <li><a class="dropdown-item" href="#">Link 3</a></li>
-        </ul>
-    </div>
-</div>
 {% for key, value in projections.items %}
 <div class="repertoire-movie">
-    <img src="{{ value.Thumbnail }}" alt="">
+    <a href="/book/cinema/{{ value.cinema_pk }}/movie/{{ value.projection_movie_id }}/date/{{ pk2 }}" class="repertoire-days-a"><img src="{{ value.Thumbnail }}" alt=""></a>
 
     <div>
-        <h5 class="h-main repertoire-h"><a href="/book/movie/{{ value.projection_movie_id }}/"
+        <h5 class="h-main repertoire-h"><a href="/book/cinema/{{ value.cinema_pk }}/movie/{{ value.projection_movie_id }}/date/{{ pk2 }}"
                                            class="repertoire-days-a">{{ value.title }}</a></h5>
         <div class="repertoire-movie-type-icon">
             {% for i in value.Genre %}
@@ -157,11 +193,11 @@
         {% for release in releases%}
         <div class="premieres-image-div">
             <div class="premieres-image">
-                <img src="https://thalosqa.blob.core.windows.net/media/{{release.movie_id__thumbnail}}" alt="">
+                <img src="https://thalospublic.blob.core.windows.net/media/{{release.movie_id__thumbnail}}" alt="">
             </div>
             <div class="premieres-image-label">
                 <h5>{{release.movie_id__title}}</h5>
-                <p>{{release.movie_id__description}}</p>
+                <p class="overflow-p">{{release.movie_id__description}}</p>
             </div>
         </div>
         {% endfor %}
@@ -170,7 +206,7 @@
 </div>
 <!--Promocje i wydarzenia-->
 <div class="event-section">
-    <h5 class="h-main">Promocje i wydarzenia</h5>
+    <h1 class="h-main" href="{% url 'events_and_promotions' %}">Promocje i wydarzenia</h1>
     <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
         <!-- Indicators/dots -->
@@ -183,10 +219,10 @@
         <!-- The slideshow/carousel -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{% static 'images/Jumanji.jpg' %}" alt="Los Angeles" class="d-block w-100">
+                <img src="https://thalospublic.blob.core.windows.net/media/movies_images/good-doctor.jpg" alt="Los Angeles" class="d-block w-100">
             </div>
             <div class="carousel-item">
-                <img src="{% static 'images/Jumanji.jpg' %}" alt="Chicago" class="d-block w-100">
+                <img src="https://thalospublic.blob.core.windows.net/media/movies_images/doctor_strange.jpg" alt="Chicago" class="d-block w-100">
             </div>
             <div class="carousel-item">
                 <img src="{% static 'images/Jumanji.jpg' %}" alt="New York" class="d-block w-100">

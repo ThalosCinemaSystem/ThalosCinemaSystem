@@ -83,7 +83,7 @@ class Room(models.Model):
         super(Room, self).delete(*args, **kwargs)
 
     def __str__(self):
-        return str(self.number)
+        return f'Numer sali: {str(self.number)} - Kino: {self.cinema.name} - Miasto: {self.cinema.city}'
 
 
 class Seat(models.Model):
