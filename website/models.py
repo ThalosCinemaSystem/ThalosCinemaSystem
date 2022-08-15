@@ -1,25 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from azure.storage.blob import BlobClient
-import os
 from datetime import timedelta
-
-try:
-    os.environ["IS_PRODUCTION"]
-except KeyError:
-    pass
-else:
-    from TCS.settings import AZURE_CUSTOM_DOMAIN, AZURE_ACCOUNT_NAME
-    from TCS.custom_azure import ACCOUNT_KEY
-
-
-    def get_blob_service(container_name, blob_name):
-        account_url = AZURE_CUSTOM_DOMAIN
-        credential = {"account_name": AZURE_ACCOUNT_NAME,
-                      "account_key": ACCOUNT_KEY}
-
-        return BlobClient(account_url=account_url, credential=credential, container_name=container_name,
-                          blob_name=blob_name)
 
 
 class Cinema(models.Model):
@@ -50,16 +31,6 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.title
-
-    try:
-        os.environ["IS_PRODUCTION"]
-    except KeyError:
-        pass
-    else:
-        def delete(self, *args, **kwargs):
-            blob_service = get_blob_service(container_name='media', blob_name=self.thumbnail.name)
-            blob_service.delete_blob()
-            super(Movie, self).delete(*args, **kwargs)
 
 
 class Room(models.Model):
@@ -108,16 +79,6 @@ class Marathon(models.Model):
     description = models.CharField(max_length=1024, null=True)
     price = models.FloatField(null=True)
     thumbnail = models.ImageField(null=True, blank=True)
-
-    try:
-        os.environ["IS_PRODUCTION"]
-    except KeyError:
-        pass
-    else:
-        def delete(self, *args, **kwargs):
-            blob_service = get_blob_service(container_name='media', blob_name=self.thumbnail.name)
-            blob_service.delete_blob()
-            super(Marathon, self).delete(*args, **kwargs)
 
     def __str__(self):
         return f'{self.name}'
