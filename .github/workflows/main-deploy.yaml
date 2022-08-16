@@ -1,5 +1,4 @@
 name: Thalos Deploy via SSH to VPS server
-
 on:
   workflow_dispatch:
 
