@@ -1,0 +1,24 @@
+name: Thalos Deploy via SSH to VPS server
+
+on:
+  workflow-dispatch:
+
+
+jobs:
+  build:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Pull new code and restart all services
+    uses: appleboy/ssh-action@master
+    with:
+     host: ${{ secrets.HOST_SSH }}
+     username: ${{ secrets.USERNAME_SSH }}
+     password: ${{ secrets.PASSWORD_SSH }}
+     port: ${{ secrets.PORT_SSH }}
+     script: | 
+      su - thalos -s /bin/bash
+      cd ThalosCinemaSystem
+      git pull
+      systemctl restart gunicorn
+      systemctl restart nginx
