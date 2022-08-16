@@ -1,8 +1,7 @@
 name: Thalos Deploy via SSH to VPS server
 
 on:
-  workflow-dispatch:
-
+  workflow_dispatch:
 
 jobs:
   build:
