@@ -51,7 +51,7 @@ else:
         }
     }
 
-ALLOWED_HOSTS = ['127.0.0.1', 'thalos.software']
+ALLOWED_HOSTS = ['127.0.0.1', 'thalos.toadres.pl']
 
 # Application definition
 
@@ -146,8 +146,8 @@ CORS_ALLOW_METHODS = [
     "PUT",
 ]
 
-CORS_ALLOWED_ORIGINS = ['http://0.0.0.0:8000', 'https://thalos.software']
-CSRF_TRUSTED_ORIGINS = ['http://0.0.0.0:8000', 'https://thalos.software']
+CORS_ALLOWED_ORIGINS = ['http://0.0.0.0:8000', 'https://thalos.toadres.pl']
+CSRF_TRUSTED_ORIGINS = ['http://0.0.0.0:8000', 'https://thalos.toadres.pl']
 
 STATIC_ROOT = BASE_DIR / 'staticfiles/'
 STATIC_URL = '/static/'
