@@ -130,4 +130,5 @@ dmypy.json
 
 #PyCharm
 .idea/
+.github/
 /staticfiles
