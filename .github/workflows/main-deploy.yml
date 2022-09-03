@@ -15,8 +15,8 @@ jobs:
        password: ${{ secrets.PASSWORD_SSH }}
        port: ${{ secrets.PORT_SSH }}
        script: | 
-        sudo su - thalos -s /bin/bash
-        sudo cd ThalosCinemaSystem/
-        sudo git pull
-        sudo systemctl restart gunicorn
-        sudo systemctl restart nginx
+        su - thalos -s /bin/bash
+        cd ThalosCinemaSystem
+        git pull
+        systemctl restart gunicorn
+        systemctl restart nginx
