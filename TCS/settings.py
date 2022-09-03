@@ -29,12 +29,8 @@ except KeyError:
     DEBUG = True
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'db_i251',
-            'USER': 'i251',
-            'PASSWORD': 'B1C8_3c3050',
-            'HOST': 'psql01.mikr.us',
-            'PORT': 5432
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
 else:
@@ -51,7 +47,7 @@ else:
         }
     }
 
-ALLOWED_HOSTS = ['127.0.0.1', 'michalw.toadres.pl']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -146,8 +142,9 @@ CORS_ALLOW_METHODS = [
     "PUT",
 ]
 
-CORS_ALLOWED_ORIGINS = ['http://0.0.0.0:8000', 'https://michalw.toadres.pl']
-CSRF_TRUSTED_ORIGINS = ['http://0.0.0.0:8000', 'https://michalw.toadres.pl']
+CORS_ALLOWED_ORIGINS = ['https://thalos.software', 'https://thalosqa.azurewebsites.net']
+CSRF_TRUSTED_ORIGINS = ['https://thalos.software', 'https://thalosqa.azurewebsites.net']
+
 
 try:
     os.environ["IS_PRODUCTION"]
