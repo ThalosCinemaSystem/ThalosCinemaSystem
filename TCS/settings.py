@@ -51,7 +51,7 @@ else:
         }
     }
 
-ALLOWED_HOSTS = ['127.0.0.1', 'thalos.toadres.pl']
+ALLOWED_HOSTS = ['127.0.0.1', 'michalw.toadres.pl']
 
 # Application definition
 
@@ -146,11 +146,31 @@ CORS_ALLOW_METHODS = [
     "PUT",
 ]
 
-CORS_ALLOWED_ORIGINS = ['http://0.0.0.0:8000', 'https://thalos.toadres.pl']
-CSRF_TRUSTED_ORIGINS = ['http://0.0.0.0:8000', 'https://thalos.toadres.pl']
+CORS_ALLOWED_ORIGINS = ['http://0.0.0.0:8000', 'https://michalw.toadres.pl']
+CSRF_TRUSTED_ORIGINS = ['http://0.0.0.0:8000', 'https://michalw.toadres.pl']
 
-STATIC_ROOT = BASE_DIR / 'staticfiles/'
-STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-MEDIA_ROOT = BASE_DIR / 'static/images/upload'
-MEDIA_URL = '/images/upload/'
+try:
+    os.environ["IS_PRODUCTION"]
+except KeyError:
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
+    STATIC_URL = '/static/'
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    MEDIA_ROOT = BASE_DIR / 'static/images/upload'
+    MEDIA_URL = '/images/upload/'
+else:
+    DEFAULT_FILE_STORAGE = 'TCS.custom_azure.AzureMediaStorage'
+    STATICFILES_STORAGE = 'TCS.custom_azure.AzureStaticStorage'
+
+    STATIC_LOCATION = "static"
+    MEDIA_LOCATION = "media"
+
+    AZURE_ACCOUNT_NAME = os.environ["STORAGE_ACCOUNT_NAME"]
+    AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
+
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
+    MEDIA_ROOT = BASE_DIR / 'media/images/upload'
+    STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+    MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
+
+    CORS_ALLOWED_ORIGINS.append(f'https://{AZURE_CUSTOM_DOMAIN}')
+    CSRF_TRUSTED_ORIGINS.append(f'https://{AZURE_CUSTOM_DOMAIN}')
