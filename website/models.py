@@ -25,7 +25,7 @@ class Movie(models.Model):
     title = models.CharField(max_length=255, null=True)
     description = models.CharField(max_length=1024, null=True)
     during = models.IntegerField(null=True)
-    thumbnail = models.ImageField(upload_to='movies_images')
+    thumbnail = models.ImageField(upload_to='upload_thumbnails')
     url_trailer = models.CharField(max_length=255, null=True)
     genre = models.ManyToManyField(Genre)
 

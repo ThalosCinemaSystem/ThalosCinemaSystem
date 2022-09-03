@@ -149,8 +149,12 @@ CORS_ALLOW_METHODS = [
 CORS_ALLOWED_ORIGINS = ['http://0.0.0.0:8000', 'https://thalos.software']
 CSRF_TRUSTED_ORIGINS = ['http://0.0.0.0:8000', 'https://thalos.software']
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
 STATIC_ROOT = BASE_DIR / 'staticfiles/'
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-MEDIA_ROOT = BASE_DIR / 'staticfiles/images/upload'
-MEDIA_URL = '/images/upload/'
+MEDIA_ROOT = BASE_DIR / 'media/'
+MEDIA_URL = 'media/'
