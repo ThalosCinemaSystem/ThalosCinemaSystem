@@ -51,7 +51,7 @@ else:
         }
     }
 
-ALLOWED_HOSTS = ['127.0.0.1', 'thalos.software']
+ALLOWED_HOSTS = ['127.0.0.1', 'thalos.software', '0.0.0.0']
 
 # Application definition
 
