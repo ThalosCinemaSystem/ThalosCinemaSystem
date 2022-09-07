@@ -11,6 +11,7 @@ services:
   nginx:
     build: ./nginx
     volumes:
+      - ./nginx:/etc/nginx/conf.d
       - static_volume:/code/staticfiles
       - media_volume:/code/static
     ports:
