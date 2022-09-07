@@ -3,7 +3,7 @@ version: "3.3"
 services:
   web:
     build: .
-    command: gunicorn TCS.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn  --workers 2 TCS.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/code
     expose:
