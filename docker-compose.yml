@@ -13,7 +13,7 @@ services:
       - static_volume:./code/staticfiles
       - media_volume:./code/static
     ports:
-      - "8000:80"
+      - "80:80"
     depends_on:
       - web
 volumes:
