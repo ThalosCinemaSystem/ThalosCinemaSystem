@@ -7,14 +7,14 @@ services:
     volumes:
       - .:/code
     ports:
-      - "8000:80"
+      - "8000:8000"
   nginx:
     build: ./nginx
     volumes:
       - static_volume:/code/staticfiles
       - media_volume:/code/static
     ports:
-      - "80:80"
+      - "1337:80"
     depends_on:
       - web
 volumes:
