@@ -15,3 +15,8 @@ services:
       - "80:80"
     depends_on:
       - web
+  wronamichal_pl:
+    restart: always
+    build: ./nginx
+    volumes:
+      - .:/usr/share/nginx/html/
