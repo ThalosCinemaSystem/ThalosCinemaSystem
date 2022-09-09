@@ -15,8 +15,3 @@ services:
       - "80:80"
     depends_on:
       - web
-  wronamichal_pl:
-    restart: always
-    build: ./nginx
-    ports:
-      - "443:80"
