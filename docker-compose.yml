@@ -7,15 +7,16 @@ services:
     volumes:
       - .:/code
     expose:
-      - 8000
+      - "8000"
   nginx:
+    restart: always
     build: ./nginx
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-      - static_volume:/code/staticfiles
-      - media_volume:/code/static
+#    volumes:
+#      - ./nginx:/etc/nginx/conf.d
+#      - static_volume:/code/staticfiles
+#      - media_volume:/code/static
     ports:
-      - "1337:80"
+      - "80:80"
     depends_on:
       - web
 volumes:
