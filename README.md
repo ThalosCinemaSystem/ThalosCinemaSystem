@@ -1,9 +1,5 @@
 # ThalosCinemaSystem ([thalos.software](https://thalos.software/))
 
-## Github and Gitlab synchronize
-- [GitHub](https://github.com/ThalosCinemaSystem/ThalosCinemaSystem)
-- [Gitlab](https://gitlab.com/michalwrona01/ThalosCinemaSystem)
-
 # Start working on this project 
 ```bash
 git clone https://github.com/ThalosCinemaSystem/ThalosCinemaSystem.git
