@@ -3,11 +3,11 @@ version: "3.3"
 services:
   thalos_web:
     build: .
-    command: gunicorn TCS.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn TCS.wsgi:application --bind 0.0.0.0:8004
     volumes:
       - .:/code
     expose:
-      - "8000"
+      - "8004"
     networks:
       - nginx_network
 networks:
