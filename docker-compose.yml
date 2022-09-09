@@ -1,17 +1,15 @@
 version: "3.3"
 
 services:
-  web:
+  thalos_web:
     build: .
     command: gunicorn TCS.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/code
     expose:
       - "8000"
-  nginx:
-    restart: always
-    build: ./nginx
-    ports:
-      - "80:80"
-    depends_on:
-      - web
+    networks:
+      - nginx_network
+networks:
+  nginx_network:
+    external: true
