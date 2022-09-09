@@ -19,6 +19,6 @@ services:
       - "80:80"
     depends_on:
       - web
-volumes:
-  static_volume:
-  media_volume:
+#volumes:
+#  static_volume:
+#  media_volume:
