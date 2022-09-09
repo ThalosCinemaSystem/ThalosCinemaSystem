@@ -20,5 +20,3 @@ services:
     build: ./nginx
     ports:
       - "443:80"
-    volumes:
-      - .:/usr/share/nginx/html/
