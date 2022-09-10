@@ -1,6 +1,11 @@
+{% load static %}
+
 {% with url_name=request.resolver_match.url_name %}
     <nav class="navbar-main navbar navbar-expand-lg navbar-dark py-3 px-4 px-lg-5 {% if url_name == 'main_page'%}navbar-main-opacity{% endif %}">
-    <h1 class="logo-navbar px-lg-4">THALOS</br>CINEMA</h1>
+    <a href="/"><h1 class="logo-navbar px-lg-4">THALOS</br>CINEMA</h1></a>
+    <a href="https://github.com/ThalosCinemaSystem/ThalosCinemaSystem">
+        <img src="{% static 'images/github_icon.png' %}" alt=""/>
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars"
             aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
