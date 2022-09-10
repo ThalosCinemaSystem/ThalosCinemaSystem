@@ -26,7 +26,7 @@ try:
     os.environ["IS_PRODUCTION"]
 except KeyError:
     SECRET_KEY = 'django-insecure-+8&q$rr)e$t@)9=z)tt8mun#_qwx%83a)w+p1qf-0giz_c8_u#'
-    DEBUG = True
+    DEBUG = False
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
