@@ -7,7 +7,7 @@ services:
     volumes:
       - .:/code
       - static_volume_thalos:/root/www/ThalosCinemaSystem/staticfiles
-      - media_volume_thalos:/root/www/ThalosCinemaSystem/mediafiles
+      - media_volume_thalos:/root/www/ThalosCinemaSystem/mediafiles/upload_thumbnails
     expose:
       - "8004"
     networks:
