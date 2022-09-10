@@ -26,7 +26,7 @@ try:
     os.environ["IS_PRODUCTION"]
 except KeyError:
     SECRET_KEY = 'django-insecure-+8&q$rr)e$t@)9=z)tt8mun#_qwx%83a)w+p1qf-0giz_c8_u#'
-    DEBUG = True
+    DEBUG = False
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -151,7 +151,7 @@ CSRF_TRUSTED_ORIGINS = ['http://0.0.0.0:8000', 'https://thalos.software']
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
-    BASE_DIR / 'media'
+    BASE_DIR / 'media',
 ]
 
 STATIC_ROOT = BASE_DIR / 'staticfiles/'
