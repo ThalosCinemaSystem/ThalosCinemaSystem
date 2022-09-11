@@ -4,7 +4,6 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /code
 RUN mkdir mediafiles
 RUN mkdir staticfiles
-RUN chown root.root ./mediafiles
 COPY requirements.txt /code/
 RUN pip install -r requirements.txt
 COPY . /code/
