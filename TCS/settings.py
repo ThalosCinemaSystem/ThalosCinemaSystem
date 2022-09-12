@@ -146,8 +146,8 @@ CORS_ALLOW_METHODS = [
     "PUT",
 ]
 
-CORS_ALLOWED_ORIGINS = ['http://0.0.0.0:8000', 'https://thalos.software']
-CSRF_TRUSTED_ORIGINS = ['http://0.0.0.0:8000', 'https://thalos.software']
+CORS_ALLOWED_ORIGINS = ['http://0.0.0.0:8004', 'https://thalos.software']
+CSRF_TRUSTED_ORIGINS = ['http://0.0.0.0:8004', 'https://thalos.software']
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
