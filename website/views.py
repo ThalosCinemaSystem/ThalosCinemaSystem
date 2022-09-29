@@ -113,7 +113,7 @@ def main_page(request, pk=None, pk2=None, pk3=None, pk4=1):
                :3]
     context = {'cinemas': cinemas, 'projections': projections, "Date": Date, "pk": pk, 'pk2': pk2, 'pk3': pk3,
                'pk4': pk4, 'pages': pages, 'releases': releases, 'genres': genres, 'P_Calendar': P_Calendar,
-               'weekend': weekend, 'y': y, 'm': m}
+               'weekend': weekend, 'y': y, 'm': m, 'opacity_urls': request.path.split('/')}
 
     return render(request, 'website/main.html', context=context)
 

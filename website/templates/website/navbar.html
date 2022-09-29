@@ -1,7 +1,7 @@
 {% load static %}
 
 {% with url_name=request.resolver_match.url_name %}
-    <nav class="navbar-main navbar navbar-expand-lg navbar-dark py-3 px-4 px-lg-5 {% if url_name == 'main_page'%}navbar-main-opacity{% endif %}">
+    <nav class="navbar-main navbar navbar-expand-lg navbar-dark py-3 px-4 px-lg-5 {% if url_name == 'main_page' or 'repertuar' in opacity_urls %}navbar-main-opacity{% endif %}">
     <a href="/"><h1 class="logo-navbar px-lg-4">THALOS</br>CINEMA</h1></a>
     <a href="https://github.com/ThalosCinemaSystem/ThalosCinemaSystem">
         <img src="{% static 'images/github_icon.png' %}" alt=""/>
