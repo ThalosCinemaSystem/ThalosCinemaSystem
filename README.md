@@ -27,6 +27,10 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
+## Diagram
+![image](https://user-images.githubusercontent.com/73277848/193300920-8600d576-1d00-4645-9cc3-3cc4818a913c.png)
+
+
 ## Go to browser
 http://127.0.0.1:8000/
 
