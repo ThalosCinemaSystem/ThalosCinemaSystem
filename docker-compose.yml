@@ -6,8 +6,8 @@ services:
     command: gunicorn TCS.wsgi:application --bind 0.0.0.0:8004
     volumes:
       - .:/code
-    expose:
-      - "8004"
+    ports:
+      - "8004:8004"
     networks:
       - nginx_network
 
