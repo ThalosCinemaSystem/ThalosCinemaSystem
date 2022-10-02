@@ -16,9 +16,3 @@ services:
 networks:
   nginx_network:
     external: true
-
-volumes:
-  static_volume:
-    external: true
-  media_volume:
-    external: true
