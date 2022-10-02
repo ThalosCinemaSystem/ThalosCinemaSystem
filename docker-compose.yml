@@ -3,7 +3,7 @@ version: "3.3"
 services:
   thalos_web:
     build: .
-    command: gunicorn -w 8 TCS.wsgi:application --bind 0.0.0.0:8004
+    command: gunicorn -w 2 TCS.wsgi:application --bind 0.0.0.0:8004
     volumes:
       - .:/code
     expose:
