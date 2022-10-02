@@ -10,7 +10,7 @@ services:
       - "8004"
     networks:
       - nginx_network
-
+#thalos_db
 networks:
   nginx_network:
     external: true
