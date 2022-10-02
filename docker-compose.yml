@@ -6,8 +6,6 @@ services:
     command: gunicorn TCS.wsgi:application --bind 0.0.0.0:8004
     volumes:
       - .:/code
-      - static_volume:/var/www/ThalosCinemaSystem/staticfiles
-      - media_volume:/var/www/ThalosCinemaSystem/mediafiles
     expose:
       - "8004"
     networks:
