@@ -20,38 +20,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-# SECURITY WARNING: don't run with debug turned on in production!
+SECRET_KEY = os.environ.get('SECRET_KEY')
+DEBUG = os.environ.get('DEBUG')
 
-try:
-    os.environ["IS_PRODUCTION"]
-except KeyError:
-    SECRET_KEY = 'django-insecure-+8&q$rr)e$t@)9=z)tt8mun#_qwx%83a)w+p1qf-0giz_c8_u#'
-    DEBUG = False
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'db_i251',
-            'USER': 'i251',
-            'PASSWORD': 'B1C8_3c3050',
-            'HOST': 'psql01.mikr.us',
-            'PORT': 5432
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get("DB_NAME"),
+        'USER': os.environ.get("DB_USERNAME"),
+        'PASSWORD': os.environ.get("DB_PASSWORD"),
+        'HOST': os.environ.get("DB_HOST"),
+        'PORT': os.environ.get("DB_PORT"),
     }
-else:
-    SECRET_KEY = os.environ['SECRET_KEY']
-    DEBUG = os.environ['DEBUG']
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ["DB_NAME"],
-            'USER': os.environ["DB_USERNAME"],
-            'PASSWORD': os.environ["DB_PASSWORD"],
-            'HOST': os.environ["DB_HOST"],
-            'PORT': os.environ["DB_PORT"],
-        }
-    }
+}
 
-ALLOWED_HOSTS = ['127.0.0.1', 'thalos.software', '0.0.0.0']
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 # Application definition
 
@@ -146,8 +129,8 @@ CORS_ALLOW_METHODS = [
     "PUT",
 ]
 
-CORS_ALLOWED_ORIGINS = ['http://0.0.0.0:8004', 'https://thalos.software']
-CSRF_TRUSTED_ORIGINS = ['http://0.0.0.0:8004', 'https://thalos.software']
+CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS").split(" ")
+CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS").split(" ")
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',

@@ -132,3 +132,5 @@ dmypy.json
 .idea/
 /staticfiles
 /mediafiles
+
+.env.prod

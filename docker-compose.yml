@@ -3,14 +3,24 @@ version: "3.3"
 services:
   thalos_web:
     build: .
-    command: gunicorn TCS.wsgi:application --bind 0.0.0.0:8004
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
-    expose:
-      - "8004"
-    networks:
-      - nginx_network
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./.env.local
+    depends_on:
+      - thalos_db
 
-networks:
-  nginx_network:
-    external: true
+  thalos_db:
+    image: postgres:13-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=thalos_local_db
+
+volumes:
+  postgres_data:
