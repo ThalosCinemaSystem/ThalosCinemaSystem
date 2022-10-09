@@ -61,8 +61,8 @@ def main_page(request, pk=None, pk2=None, pk3=None, pk4=1):
 
     P_Calendar[1] = P_Calendar[1].formatmonth(withyear=True)
     projection = Projection.objects.filter(room__cinema__name=pk)
-    pk2 = datetime.datetime.strptime(pk2, '%Y-%m-%d')
-    projection = projection.filter(start_date_time__contains=pk2)
+    pk2_date_format = datetime.datetime.strptime(pk2, '%Y-%m-%d')
+    projection = projection.filter(start_date_time__contains=str(pk2_date_format.date()))
     if pk3 is not None and pk3 != 'None':
         projection = projection.filter(movie_id__genre__name=pk3)
     weekend = ["NIEDZ", "PON", "WT", "ŚR", "CZW", "PT", "SOB"]
