@@ -19,6 +19,9 @@ class Calendar(HTMLCalendar):
     def formatday(self, day):
         if day != 0:
             month = datetime.datetime.strptime(str(self.month), "%m").strftime("%m")
+
+            day = '0' + str(day) if day < 10 else day
+
             if day == int(self.data.split("-")[2]) and self.month == int(self.data.split("-")[1]):
                 return f"<li><a href ='/repertuar/{self.cinema}/{self.year}-{month}-{day}/'><span class='active'>{day}</span></a></li>"
             else:
