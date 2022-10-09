@@ -19,9 +19,6 @@ class Calendar(HTMLCalendar):
     def formatday(self, day):
         if day != 0:
             month = datetime.datetime.strptime(str(self.month), "%m").strftime("%m")
-
-            day = '0' + str(day) if day < 10 else day
-
             if day == int(self.data.split("-")[2]) and self.month == int(self.data.split("-")[1]):
                 return f"<li><a href ='/repertuar/{self.cinema}/{self.year}-{month}-{day}/'><span class='active'>{day}</span></a></li>"
             else:
@@ -64,6 +61,7 @@ def main_page(request, pk=None, pk2=None, pk3=None, pk4=1):
 
     P_Calendar[1] = P_Calendar[1].formatmonth(withyear=True)
     projection = Projection.objects.filter(room__cinema__name=pk)
+    pk2 = datetime.datetime.strptime(pk2, '%Y-%m-%d')
     projection = projection.filter(start_date_time__contains=pk2)
     if pk3 is not None and pk3 != 'None':
         projection = projection.filter(movie_id__genre__name=pk3)
