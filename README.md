@@ -23,10 +23,11 @@ pip install -r requirements_linux.txt
 ```
 ## Next steps
 ```bash
-python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
+# The instructions above are outdated
+
 ## Diagram
 ![image](https://user-images.githubusercontent.com/73277848/193300920-8600d576-1d00-4645-9cc3-3cc4818a913c.png)
 
