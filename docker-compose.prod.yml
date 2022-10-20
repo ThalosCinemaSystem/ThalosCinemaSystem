@@ -13,6 +13,14 @@ services:
     networks:
       - nginx_network
 
+  varnish:
+    build: ./varnish
+    expose:
+      - "5002"
+    networks:
+      - nginx_network
+
+
 networks:
   nginx_network:
     external: true
