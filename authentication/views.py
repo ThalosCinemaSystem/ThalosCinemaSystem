@@ -14,7 +14,10 @@ def login(request):
         user = UserLoginBackend().authenticate(request, email=email, password=password)
         if user:
             auth_login(request, user)
-            return redirect('main_page')
+            request_http_referer = request.META.get('HTTP_REFERER')
+            if request_http_referer.split('/')[-1] in ['login']:
+                return redirect('main_page')
+            return redirect(request_http_referer)
         else:
             msg = '<div class="alert alert-danger" role="alert">Błędny e-mail lub hasło</div>'
 
