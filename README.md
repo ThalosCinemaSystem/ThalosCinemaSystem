@@ -9,6 +9,8 @@
 git clone https://github.com/ThalosCinemaSystem/ThalosCinemaSystem.git
 cd ThalosCinemaSystem
 ```
+# Docker
+In progress
 ### Windows
 ```bash
 python -m venv env
