@@ -16,7 +16,7 @@
     <ul class="navbar-nav text-center justify-content px-lg-4">
         <li class="nav-item mx-1">
             <a class="nav-link text-light" href="{% url 'main_page' %}"><span
-                    class="nav-link-text {% if url_name == 'main_page' %}nav_active{% endif %}">REPERTUAR</span></a>
+                    class="nav-link-text {% if url_name == 'main_page' or 'repertuar' in url_name %}nav_active{% endif %}">REPERTUAR</span></a>
         </li>
         <li class="nav-item mx-1">
             <a class="nav-link text-light" href="{% url 'events_and_promotions' %}"><span
