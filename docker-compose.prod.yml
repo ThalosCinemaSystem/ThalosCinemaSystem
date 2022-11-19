@@ -1,7 +1,7 @@
 version: "3.3"
 
 services:
-  thalos_web:
+  thalos_web_1:
     container_name: thalos_web_1
     build: .
     command: gunicorn TCS.wsgi:application --bind 0.0.0.0:8004
@@ -9,6 +9,19 @@ services:
       - .:/code
     expose:
       - "8004"
+    env_file:
+      - ./.env.prod
+    networks:
+      - nginx_network
+
+  thalos_web_2:
+    container_name: thalos_web_2
+    build: .
+    command: gunicorn TCS.wsgi:application --bind 0.0.0.0:8005
+    volumes:
+      - .:/code
+    expose:
+      - "8005"
     env_file:
       - ./.env.prod
     networks:
