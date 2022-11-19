@@ -2,6 +2,7 @@ version: "3.3"
 
 services:
   thalos_web:
+    container_name: thalos_web_2
     build: .
     command: gunicorn TCS.wsgi:application --bind 0.0.0.0:8005
     volumes:
