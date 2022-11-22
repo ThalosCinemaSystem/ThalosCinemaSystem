@@ -24,6 +24,8 @@ services:
       - "8005"
     env_file:
       - ./.env.prod
+    depends_on:
+      - thalos_web_1
     networks:
       - nginx_network
 
