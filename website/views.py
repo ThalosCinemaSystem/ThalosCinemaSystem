@@ -1,4 +1,5 @@
 from django.contrib.auth import logout
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
@@ -247,3 +248,5 @@ def reservation_summary(request):
 
     return redirect(main_page)
 
+def health_check(request):
+    return HttpResponse(content='Health Check: OK')

@@ -19,4 +19,5 @@ urlpatterns = [
     path('repertoire', views.repertoire, name="repertoire"),
     path('change-password', views.change_password, name='change_password'),
     path('reservation-summary', views.reservation_summary, name='reservation_summary'),
+    path('health-check', views.health_check)
 ]
