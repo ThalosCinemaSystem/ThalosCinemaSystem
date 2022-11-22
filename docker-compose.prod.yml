@@ -4,7 +4,7 @@ services:
   thalos_web_1:
     container_name: thalos_web_1
     build: .
-    command: gunicorn --workers=2 TCS.wsgi:application --bind 0.0.0.0:8004
+    command: gunicorn --workers=2 TCS.wsgi:application --bind 0.0.0.0:8004 --log-level=info --log-file=./logs/gunicorn.log --access-logfile=./logs/gunicorn-access.log
     volumes:
       - .:/code
     expose:
@@ -17,7 +17,7 @@ services:
   thalos_web_2:
     container_name: thalos_web_2
     build: .
-    command: gunicorn --workers=2 TCS.wsgi:application --bind 0.0.0.0:8005
+    command: gunicorn --workers=2 TCS.wsgi:application --bind 0.0.0.0:8005 --log-level=info --log-file=./logs/gunicorn.log --access-logfile=./logs/gunicorn-access.log
     volumes:
       - .:/code
     expose:
