@@ -249,4 +249,6 @@ def reservation_summary(request):
     return redirect(main_page)
 
 def health_check(request):
-    return HttpResponse(content='Health Check: OK')
+    response = HttpResponse(content='Health Check: OK')
+    response.headers['Cache-Control'] = 'no-store'
+    return response
