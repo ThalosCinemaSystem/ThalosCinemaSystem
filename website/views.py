@@ -251,4 +251,5 @@ def reservation_summary(request):
 def health_check(request):
     response = HttpResponse(content='Health Check: OK')
     response.headers['Cache-Control'] = 'no-store'
+    response.status_code = 200
     return response
