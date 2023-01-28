@@ -4,50 +4,11 @@ services:
   thalos_web_1:
     container_name: thalos_web_1
     build: .
-    command: gunicorn --workers=4 TCS.wsgi:application --bind 0.0.0.0:8004 --log-level=info --log-file=./logs/gunicorn_web_1.log --access-logfile=./logs/gunicorn-access_web_1.log
+    command: gunicorn --workers=1 TCS.wsgi:application --bind 0.0.0.0:8004 --log-level=info --log-file=./logs/gunicorn_web_1.log --access-logfile=./logs/gunicorn-access_web_1.log
     volumes:
       - .:/code
     expose:
       - "8004"
-    env_file:
-      - ./.env.prod
-    networks:
-      - nginx_network
-
-  thalos_web_2:
-    container_name: thalos_web_2
-    build: .
-    command: gunicorn --workers=4 TCS.wsgi:application --bind 0.0.0.0:8005 --log-level=info --log-file=./logs/gunicorn_web_2.log --access-logfile=./logs/gunicorn-access_web_2.log
-    volumes:
-      - .:/code
-    expose:
-      - "8005"
-    env_file:
-      - ./.env.prod
-    networks:
-      - nginx_network
-
-  thalos_web_3:
-    container_name: thalos_web_3
-    build: .
-    command: gunicorn --workers=4 TCS.wsgi:application --bind 0.0.0.0:8006 --log-level=info --log-file=./logs/gunicorn_web_3.log --access-logfile=./logs/gunicorn-access_web_3.log
-    volumes:
-      - .:/code
-    expose:
-      - "8006"
-    env_file:
-      - ./.env.prod
-    networks:
-      - nginx_network
-
-  thalos_web_4:
-    container_name: thalos_web_4
-    build: .
-    command: gunicorn --workers=4 TCS.wsgi:application --bind 0.0.0.0:8007 --log-level=info --log-file=./logs/gunicorn_web_4.log --access-logfile=./logs/gunicorn-access_web_4.log
-    volumes:
-      - .:/code
-    expose:
-      - "8007"
     env_file:
       - ./.env.prod
     networks:
