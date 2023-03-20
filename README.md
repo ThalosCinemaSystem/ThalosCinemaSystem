@@ -37,4 +37,5 @@ python manage.py runserver
 ## Go to browser
 http://127.0.0.1:8000/
 
+### Test CICD
 
