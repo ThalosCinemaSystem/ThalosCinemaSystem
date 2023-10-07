@@ -1,4 +1,4 @@
-# ThalosCinemaSystem ([thalos.wronamichal.pl](https://thalos.wronamichal.pl/))
+# ThalosCinemaSystem ([thalos.michalwrona.pl](https://thalos.michalwrona.pl/))
 
 ## Github and Gitlab synchronize
 - [GitHub](https://github.com/ThalosCinemaSystem/ThalosCinemaSystem)
